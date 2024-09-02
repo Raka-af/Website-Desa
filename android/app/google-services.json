@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "790943371145",
+    "project_id": "flutter-web-connection-5b8e3",
+    "storage_bucket": "flutter-web-connection-5b8e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790943371145:android:3870ad5a84bf3684c55b58",
+        "android_client_info": {
+          "package_name": "com.example.website_desa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJIONgzWyJ4HO8yonQ9jSdXXdg0Gb5mUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
