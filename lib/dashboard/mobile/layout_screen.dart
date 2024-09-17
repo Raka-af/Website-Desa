@@ -4,7 +4,7 @@ import 'package:website_desa/dashboard/mobile/destination_screen.dart';
 import 'package:website_desa/dashboard/mobile/gallery_screen.dart';
 import 'package:website_desa/dashboard/mobile/home_screen.dart';
 import 'package:website_desa/dashboard/mobile/layout_screen.dart';
-import 'package:website_desa/dashboard/mobile/news_screen.dart';
+import 'package:website_desa/dashboard/mobile/umkm_screen.dart';
 import 'package:website_desa/dashboard/mobile/profile_screen.dart';
 import 'package:website_desa/dashboard/mobile/struktur_screen.dart';
 import 'package:website_desa/dashboard/mobile/home_screen.dart';
@@ -36,14 +36,14 @@ class LayoutScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: screenHeight * 0.01 + screenWidth * 0.01,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                  fontFamily: 'SFUI'),
             ),
           ],
         ),
       ),
       endDrawer: Drawer(
         backgroundColor: Colors.white,
-        width: screenWidth * 0.3,
+        width: screenWidth * 0.4,
         child: ListView(
           children: [
             ListTile(
@@ -52,7 +52,10 @@ class LayoutScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => HomeScreen2()),
                       ),
-                  child: Text('Home')),
+                  child: Text(
+                    'Home',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
@@ -61,7 +64,10 @@ class LayoutScreen extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => ProfileScreen()),
                       ),
-                  child: Text('Profil')),
+                  child: Text(
+                    'Profil',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
@@ -69,7 +75,10 @@ class LayoutScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => DataScreen()),
                       ),
-                  child: Text('Data')),
+                  child: Text(
+                    'Data',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
@@ -79,7 +88,10 @@ class LayoutScreen extends StatelessWidget {
                           builder: (context) => StructureScreen(),
                         ),
                       ),
-                  child: Text('Struktur')),
+                  child: Text(
+                    'Struktur',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
@@ -89,17 +101,23 @@ class LayoutScreen extends StatelessWidget {
                           builder: (context) => DestinationScreen(),
                         ),
                       ),
-                  child: Text('Destinasi')),
+                  child: Text(
+                    'Destinasi',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
                   onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NewsScreen(),
+                          builder: (context) => UmkmScreen(),
                         ),
                       ),
-                  child: Text('Berita')),
+                  child: Text(
+                    'UMKM',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
             ListTile(
               title: InkWell(
@@ -109,7 +127,10 @@ class LayoutScreen extends StatelessWidget {
                           builder: (context) => GalleryScreen(),
                         ),
                       ),
-                  child: Text('Galeri')),
+                  child: Text(
+                    'Galeri',
+                    style: TextStyle(fontFamily: 'SFUI'),
+                  )),
             ),
           ],
         ),

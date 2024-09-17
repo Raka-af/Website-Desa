@@ -44,10 +44,8 @@ class DataJenisKelamin extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('data_penduduk')
-                  .doc('Atw91p58rLoqyy0mes74')
-                  .collection('data')
-                  .doc('G2C9tQEBj2u4GXm7P9Iz')
+                  .collection('data_jenis_kelamin')
+                  .doc('2')
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -61,30 +59,11 @@ class DataJenisKelamin extends StatelessWidget {
                 var data = snapshot.data!.data() as Map<String, dynamic>;
                 return Column(
                   children: <Widget>[
-                    StreamBuilder<DocumentSnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('data_penduduk')
-                          .doc('Atw91p58rLoqyy0mes74')
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Center(child: CircularProgressIndicator());
-                        }
-
-                        if (!snapshot.hasData || snapshot.data == null) {
-                          return Center(child: Text('Tidak ada data'));
-                        }
-
-                        var cat = snapshot.data!.data() as Map<String, dynamic>;
-                        return Text(
-                          cat['name_kategori'],
-                          style: TextStyle(
-                              fontSize:
-                                  screenHeight * 0.015 + screenWidth * 0.015,
-                              fontWeight: FontWeight.w500),
-                        );
-                      },
+                    Text(
+                      "Data Jenis Kelamin",
+                      style: TextStyle(
+                          fontSize: screenHeight * 0.015 + screenWidth * 0.015,
+                          fontWeight: FontWeight.w500),
                     ),
                     Container(
                       height: screenHeight * 0.003,
@@ -138,78 +117,118 @@ class DataJenisKelamin extends StatelessWidget {
                         ),
 
                         //Perempuan
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['nama2'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
+                        StreamBuilder<DocumentSnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('data_jenis_kelamin')
+                              .doc('1')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+
+                            if (!snapshot.hasData || snapshot.data == null) {
+                              return Center(child: Text('Tidak ada data'));
+                            }
+
+                            var data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(217, 217, 217, 217),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              Image(
-                                image: AssetImage("Assets/Penduduk/cewe.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
+                              width: screenWidth * 0.2,
+                              height: screenHeight * 0.3,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    data['nama'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Image(
+                                    image:
+                                        AssetImage("Assets/Penduduk/cewe.png"),
+                                    width: screenWidth * 0.15,
+                                    height: screenHeight * 0.15,
+                                  ),
+                                  Text(
+                                    data['jumlah'].toString(),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.center,
                               ),
-                              Text(
-                                data['jumlah2'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
+                            );
+                          },
                         ),
                         SizedBox(
                           width: 30,
                         ),
 
                         //Jumlah Penduduk
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['nama3'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
+                        StreamBuilder<DocumentSnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('data_jenis_kelamin')
+                              .doc('3')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+
+                            if (!snapshot.hasData || snapshot.data == null) {
+                              return Center(child: Text('Tidak ada data'));
+                            }
+
+                            var data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(217, 217, 217, 217),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              Image(
-                                image: AssetImage("Assets/Penduduk/Jumlah.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
+                              width: screenWidth * 0.2,
+                              height: screenHeight * 0.3,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    data['nama'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Image(
+                                    image: AssetImage(
+                                        "Assets/Penduduk/Jumlah.png"),
+                                    width: screenWidth * 0.15,
+                                    height: screenHeight * 0.15,
+                                  ),
+                                  Text(
+                                    data['jumlah'].toString(),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.center,
                               ),
-                              Text(
-                                data['jumlah3'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
+                            );
+                          },
                         ),
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -247,48 +266,22 @@ class DataAgama extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('data_penduduk')
-                  .doc('k5SU05RILjaoAEOhfTcK')
-                  .collection('data')
-                  .doc('rOHL20U53f6Q81IWgfFh')
+                  .collection('data_agama')
+                  .doc('1')
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 }
-
-                if (!snapshot.hasData || snapshot.data == null) {
-                  return Center(child: Text('Tidak ada data'));
-                }
-
                 var data = snapshot.data!.data() as Map<String, dynamic>;
                 return Column(
                   children: <Widget>[
-                    StreamBuilder<DocumentSnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection('data_penduduk')
-                            .doc('k5SU05RILjaoAEOhfTcK')
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-
-                          if (!snapshot.hasData || snapshot.data == null) {
-                            return Center(child: Text('Tidak ada data'));
-                          }
-
-                          var cat =
-                              snapshot.data!.data() as Map<String, dynamic>;
-                          return Text(
-                            cat['name_kategori'],
-                            style: TextStyle(
-                                fontSize:
-                                    screenHeight * 0.015 + screenWidth * 0.015,
-                                fontWeight: FontWeight.w500),
-                          );
-                        }),
+                    Text(
+                      "Data Agama",
+                      style: TextStyle(
+                          fontSize: screenHeight * 0.015 + screenWidth * 0.015,
+                          fontWeight: FontWeight.w500),
+                    ),
                     Container(
                       height: screenHeight * 0.003,
                       width: screenWidth * 0.25,
@@ -312,7 +305,7 @@ class DataAgama extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Text(
-                                data['agama'],
+                                data['nama'],
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: screenHeight * 0.015 +
@@ -325,7 +318,7 @@ class DataAgama extends StatelessWidget {
                                 height: screenHeight * 0.15,
                               ),
                               Text(
-                                data['jumlah'].toString(),
+                                data['jumlah'],
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: screenHeight * 0.015 +
@@ -341,79 +334,111 @@ class DataAgama extends StatelessWidget {
                         ),
 
                         //Agama Kristen
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['agama2'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Image(
-                                image: AssetImage("Assets/Agama/Kristen.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
-                              ),
-                              Text(
-                                data['jumlah2'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
-                        ),
+                        StreamBuilder<DocumentSnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('data_agama')
+                                .doc('2')
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+
+                              var data =
+                                  snapshot.data!.data() as Map<String, dynamic>;
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(217, 217, 217, 217),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                width: screenWidth * 0.2,
+                                height: screenHeight * 0.3,
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      data['nama'],
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: screenHeight * 0.015 +
+                                              screenWidth * 0.015,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Image(
+                                      image: AssetImage(
+                                          "Assets/Agama/Kristen.png"),
+                                      width: screenWidth * 0.15,
+                                      height: screenHeight * 0.15,
+                                    ),
+                                    Text(
+                                      data['jumlah'],
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: screenHeight * 0.015 +
+                                              screenWidth * 0.015,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                ),
+                              );
+                            }),
                         SizedBox(
                           width: 30,
                         ),
 
                         //Agama Buddha
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['agama3'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Image(
-                                image: AssetImage("Assets/Agama/Buddha.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
-                              ),
-                              Text(
-                                data['jumlah3'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
-                        ),
+                        StreamBuilder<DocumentSnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('data_agama')
+                                .doc('3')
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+
+                              var data =
+                                  snapshot.data!.data() as Map<String, dynamic>;
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(217, 217, 217, 217),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                width: screenWidth * 0.2,
+                                height: screenHeight * 0.3,
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      data['nama'],
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: screenHeight * 0.015 +
+                                              screenWidth * 0.015,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Image(
+                                      image:
+                                          AssetImage("Assets/Agama/Buddha.png"),
+                                      width: screenWidth * 0.15,
+                                      height: screenHeight * 0.15,
+                                    ),
+                                    Text(
+                                      data['jumlah'].toString(),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: screenHeight * 0.015 +
+                                              screenWidth * 0.015,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                ),
+                              );
+                            }),
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
@@ -452,48 +477,22 @@ class DataPendidikan extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('data_penduduk')
-                  .doc('Qa8kQjKyRvQBwJXi8P7J')
-                  .collection('data')
-                  .doc('K7uyXP2cFjqHG2p7Lyls')
+                  .collection('data_pendidikan')
+                  .doc('1')
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 }
-
-                if (!snapshot.hasData || snapshot.data == null) {
-                  return Center(child: Text('Tidak ada data'));
-                }
-
                 var data = snapshot.data!.data() as Map<String, dynamic>;
                 return Column(
                   children: <Widget>[
-                    StreamBuilder<DocumentSnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection('data_penduduk')
-                            .doc('Qa8kQjKyRvQBwJXi8P7J')
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-
-                          if (!snapshot.hasData || snapshot.data == null) {
-                            return Center(child: Text('Tidak ada data'));
-                          }
-
-                          var cat =
-                              snapshot.data!.data() as Map<String, dynamic>;
-                          return Text(
-                            cat['name_kategori'],
-                            style: TextStyle(
-                                fontSize:
-                                    screenHeight * 0.015 + screenWidth * 0.015,
-                                fontWeight: FontWeight.w500),
-                          );
-                        }),
+                    Text(
+                      "Data Pendidikan",
+                      style: TextStyle(
+                          fontSize: screenHeight * 0.015 + screenWidth * 0.015,
+                          fontWeight: FontWeight.w500),
+                    ),
                     Container(
                       height: screenHeight * 0.003,
                       width: screenWidth * 0.25,
@@ -517,7 +516,7 @@ class DataPendidikan extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Text(
-                                data['pendidikan'],
+                                data['nama'],
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: screenHeight * 0.015 +
@@ -546,78 +545,108 @@ class DataPendidikan extends StatelessWidget {
                         ),
 
                         //SD
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['pendidikan2'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
+                        StreamBuilder<DocumentSnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('data_pendidikan')
+                              .doc('2')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                            var data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(217, 217, 217, 217),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              Image(
-                                image: AssetImage("Assets/Pendidikan/SD.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
+                              width: screenWidth * 0.2,
+                              height: screenHeight * 0.3,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    data['nama'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Image(
+                                    image:
+                                        AssetImage("Assets/Pendidikan/SD.png"),
+                                    width: screenWidth * 0.15,
+                                    height: screenHeight * 0.15,
+                                  ),
+                                  Text(
+                                    data['jumlah'].toString(),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.center,
                               ),
-                              Text(
-                                data['jumlah2'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
+                            );
+                          },
                         ),
                         SizedBox(
                           width: 30,
                         ),
 
                         //SMP
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(217, 217, 217, 217),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          width: screenWidth * 0.2,
-                          height: screenHeight * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                data['pendidikan3'],
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
+                        StreamBuilder<DocumentSnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('data_pendidikan')
+                              .doc('3')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                            var data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(217, 217, 217, 217),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              Image(
-                                image: AssetImage("Assets/Pendidikan/SMP.png"),
-                                width: screenWidth * 0.15,
-                                height: screenHeight * 0.15,
+                              width: screenWidth * 0.2,
+                              height: screenHeight * 0.3,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    data['nama'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Image(
+                                    image:
+                                        AssetImage("Assets/Pendidikan/SMP.png"),
+                                    width: screenWidth * 0.15,
+                                    height: screenHeight * 0.15,
+                                  ),
+                                  Text(
+                                    data['jumlah'].toString(),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenHeight * 0.015 +
+                                            screenWidth * 0.015,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.center,
                               ),
-                              Text(
-                                data['jumlah3'].toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: screenHeight * 0.015 +
-                                        screenWidth * 0.015,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                          ),
+                            );
+                          },
                         ),
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -629,122 +658,167 @@ class DataPendidikan extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(217, 217, 217, 217),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              width: screenWidth * 0.2,
-                              height: screenHeight * 0.3,
+                            StreamBuilder<DocumentSnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('data_pendidikan')
+                                  .doc('4')
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                var data = snapshot.data!.data()
+                                    as Map<String, dynamic>;
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(217, 217, 217, 217),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  width: screenWidth * 0.2,
+                                  height: screenHeight * 0.3,
 
-                              //SMA
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    data['pendidikan4'],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
+                                  //SMA
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        data['nama'],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Image(
+                                        image: AssetImage(
+                                            "Assets/Pendidikan/SMA.png"),
+                                        width: screenWidth * 0.15,
+                                        height: screenHeight * 0.15,
+                                      ),
+                                      Text(
+                                        data['jumlah'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                   ),
-                                  Image(
-                                    image:
-                                        AssetImage("Assets/Pendidikan/SMA.png"),
-                                    width: screenWidth * 0.15,
-                                    height: screenHeight * 0.15,
-                                  ),
-                                  Text(
-                                    data['jumlah4'].toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                                mainAxisAlignment: MainAxisAlignment.center,
-                              ),
+                                );
+                              },
                             ),
                             SizedBox(
                               width: 30,
                             ),
 
                             //Sarjana
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(217, 217, 217, 217),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              width: screenWidth * 0.2,
-                              height: screenHeight * 0.3,
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    data['pendidikan5'],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
+                            StreamBuilder<DocumentSnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('data_pendidikan')
+                                  .doc('5')
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                var data = snapshot.data!.data()
+                                    as Map<String, dynamic>;
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(217, 217, 217, 217),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
-                                  Image(
-                                    image:
-                                        AssetImage("Assets/Pendidikan/S1.png"),
-                                    width: screenWidth * 0.15,
-                                    height: screenHeight * 0.15,
+                                  width: screenWidth * 0.2,
+                                  height: screenHeight * 0.3,
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        data['nama'],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Image(
+                                        image: AssetImage(
+                                            "Assets/Pendidikan/S1.png"),
+                                        width: screenWidth * 0.15,
+                                        height: screenHeight * 0.15,
+                                      ),
+                                      Text(
+                                        data['jumlah'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                   ),
-                                  Text(
-                                    data['jumlah5'].toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                                mainAxisAlignment: MainAxisAlignment.center,
-                              ),
+                                );
+                              },
                             ),
                             SizedBox(
                               width: 30,
                             ),
 
                             //Magister
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(217, 217, 217, 217),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              width: screenWidth * 0.2,
-                              height: screenHeight * 0.3,
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    data['pendidikan6'],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('data_pendidikan')
+                                  .doc('6')
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                var data = snapshot.data!.data()
+                                    as Map<String, dynamic>;
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(217, 217, 217, 217),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
-                                  Image(
-                                    image:
-                                        AssetImage("Assets/Pendidikan/S2.png"),
-                                    width: screenWidth * 0.15,
-                                    height: screenHeight * 0.15,
+                                  width: screenWidth * 0.2,
+                                  height: screenHeight * 0.3,
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        data['nama'],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Image(
+                                        image: AssetImage(
+                                            "Assets/Pendidikan/S2.png"),
+                                        width: screenWidth * 0.15,
+                                        height: screenHeight * 0.15,
+                                      ),
+                                      Text(
+                                        data['jumlah'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: screenHeight * 0.015 +
+                                                screenWidth * 0.015,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                   ),
-                                  Text(
-                                    data['jumlah6'].toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenHeight * 0.015 +
-                                            screenWidth * 0.015,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                                mainAxisAlignment: MainAxisAlignment.center,
-                              ),
+                                );
+                              },
                             ),
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -778,7 +852,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
               fontSize: screenWidth * 0.007 + screenHeight * 0.01,
               color: Colors.white,

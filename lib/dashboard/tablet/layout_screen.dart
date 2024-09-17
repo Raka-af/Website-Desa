@@ -4,7 +4,7 @@ import 'package:website_desa/dashboard/tablet/destination_screen.dart';
 import 'package:website_desa/dashboard/tablet/gallery_screen.dart';
 import 'package:website_desa/dashboard/tablet/home_screen1.dart';
 import 'package:website_desa/dashboard/tablet/layout_screen.dart';
-import 'package:website_desa/dashboard/tablet/news_screen.dart';
+import 'package:website_desa/dashboard/tablet/umkm_screen.dart';
 import 'package:website_desa/dashboard/tablet/profile_screen.dart';
 import 'package:website_desa/dashboard/tablet/struktur_screen.dart';
 
@@ -116,23 +116,23 @@ class LayoutScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: media.width * 0.03,
+              width: media.width * 0.025,
             ),
             InkWell(
               onTap: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => NewsScreen()),
+                MaterialPageRoute(builder: (context) => UmkmScreen()),
               ),
               child: Text(
-                'Berita',
+                'UMKM',
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.023,
+                    fontSize: MediaQuery.of(context).size.width * 0.020,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
-              width: media.width * 0.03,
+              width: media.width * 0.020,
             ),
             InkWell(
               onTap: () => Navigator.pushReplacement(

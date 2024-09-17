@@ -38,7 +38,7 @@ class HeroSection extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Positioned(
-              bottom: screenHeight * 0.3,
+              bottom: screenHeight * 0.35,
               left: screenWidth * 0.2,
               right: screenWidth * 0.2,
               child: Text(
@@ -47,9 +47,9 @@ class HeroSection extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   backgroundColor: Colors.black12,
-                  fontSize: screenHeight * 0.02 + screenWidth * 0.03,
+                  fontSize: screenHeight * 0.02 + screenWidth * 0.025,
                   color: Colors.white,
-                  fontFamily: 'SFUi',
+                  fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -71,16 +71,16 @@ class FacilitySection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       color: Colors.white,
       width: 1500,
-      height: 500,
+      height: 450,
       child: Column(
         children: <Widget>[
           Text(
             'Fasilitas Desa',
             style: TextStyle(
-              fontSize: screenWidth * 0.01 + screenHeight * 0.03,
+              fontSize: screenWidth * 0.01 + screenHeight * 0.02,
               color: Colors.black,
-              fontFamily: 'SFUi',
-              fontWeight: FontWeight.w500,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: 20),
@@ -263,7 +263,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
                 fontSize: screenWidth * 0.007 + screenHeight * 0.01,
                 color: Colors.white,
@@ -298,10 +298,16 @@ class Footer extends StatelessWidget {
                       height: screenHeight * 0.045,
                     ),
                   ),
-                  Image(
-                    image: AssetImage("assets/Desa/facebook.png"),
-                    width: screenWidth * 0.045,
-                    height: screenHeight * 0.045,
+                  InkWell(
+                    onTap: () => launchUrl(
+                      Uri.parse(
+                          'https://web.facebook.com/profile.php?id=61557585922362'),
+                    ),
+                    child: Image(
+                      image: AssetImage("assets/Desa/facebook.png"),
+                      width: screenWidth * 0.045,
+                      height: screenHeight * 0.045,
+                    ),
                   ),
                 ],
               ),

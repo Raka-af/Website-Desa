@@ -4,7 +4,7 @@ import 'package:website_desa/dashboard/desktop/destination_screen.dart';
 import 'package:website_desa/dashboard/desktop/gallery_screen.dart';
 import 'package:website_desa/dashboard/desktop/home_screen.dart';
 import 'package:website_desa/dashboard/desktop/layout_screen.dart';
-import 'package:website_desa/dashboard/desktop/news_screen.dart';
+import 'package:website_desa/dashboard/desktop/umkm_screen.dart';
 import 'package:website_desa/dashboard/desktop/profile_screen.dart';
 import 'package:website_desa/dashboard/desktop/struktur_screen.dart';
 
@@ -35,7 +35,7 @@ class LayoutScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                  fontFamily: 'SFUI'),
             ),
             SizedBox(
               width: media.width * 0.275,
@@ -50,7 +50,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -64,7 +64,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -80,7 +80,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -97,7 +97,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -111,7 +111,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -120,14 +120,14 @@ class LayoutScreen extends StatelessWidget {
             InkWell(
               onTap: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => NewsScreen()),
+                MaterialPageRoute(builder: (context) => UMKMScreen()),
               ),
               child: Text(
-                'Berita',
+                'UMKM',
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
             SizedBox(
@@ -143,7 +143,7 @@ class LayoutScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: screenWidth * 0.012 + screenHeight * 0.012,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: 'SFUI'),
               ),
             ),
           ],

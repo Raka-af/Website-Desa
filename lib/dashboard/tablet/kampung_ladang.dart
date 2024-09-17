@@ -159,7 +159,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
               fontSize: screenWidth * 0.007 + screenHeight * 0.01,
               color: Colors.white,

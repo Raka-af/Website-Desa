@@ -32,8 +32,10 @@ class VisiMisi extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: screenWidth / 1,
-      height: screenHeight / 2,
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      height: screenHeight / 1.35,
+      padding: EdgeInsets.symmetric(
+        horizontal: 30,
+      ),
       child: Column(
         children: <Widget>[
           Image(
@@ -58,11 +60,12 @@ class VisiMisi extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           Text(
-            'Mewujudkan Masyarakat Margalaksana yang Bertakwa, \n Mandiri dan Pengelolaan Desa yang Transparan',
+            'GEULIS'
+            '\n (Gandang, Efektif dan Efisien, Unggul, Linuhung, Inovatif, Sejahtera)',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: screenHeight * 0.013 + screenWidth * 0.013,
-            ),
+                fontSize: screenHeight * 0.013 + screenWidth * 0.013,
+                fontWeight: FontWeight.w500),
           ),
           SizedBox(
             height: 20,
@@ -72,6 +75,17 @@ class VisiMisi extends StatelessWidget {
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
                 fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '1. Mewujudkan kehidupan beragama dan berbudaya yang bertoleransi dan saling menghormati'
+            '\n 2. Terwujudnya Masyarakat yang sejahtera dengan perekonomian mandiri dengan meningkatkan ekonomi kerakyatan dan pariwisata berbasis ekonomi kreatif'
+            '\n 3. Mewujudkan tata kelola desa yang transparan, demokratis dan cepat tanggap dalam menampung aspirasi masyarakat'
+            '\n 4. Meningkatkan kesehatan, kebersihan Desa serta Mengusahakan Jaminan Kesehatan Masyarakat Melalui Program Pemerintah'
+            '\n 5. Mewujudkan masyarakat yang taat hukum berdasar pada UUD 1945 dan Pansasila',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: screenHeight * 0.011 + screenWidth * 0.011,
+                fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -223,7 +237,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
                 fontSize: screenWidth * 0.007 + screenHeight * 0.01,
                 color: Colors.white,
@@ -248,18 +262,30 @@ class Footer extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: <Widget>[
-                    Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://www.instagram.com/desamargalaksana_/'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/social.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://web.facebook.com/profile.php?id=61557585922362'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/facebook.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
                   ],
                 ),

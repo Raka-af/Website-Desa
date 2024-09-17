@@ -32,8 +32,8 @@ class VisiMisi extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: screenWidth / 1,
-      height: screenHeight / 1.5,
-      padding: EdgeInsets.all(30),
+      height: screenHeight / 1,
+      padding: EdgeInsets.symmetric(horizontal: 70, vertical: 10),
       child: Column(
         children: <Widget>[
           Image(
@@ -57,10 +57,11 @@ class VisiMisi extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           Text(
-            'Mewujudkan Masyarakat Margalaksana yang Bertakwa, \n Mandiri dan Pengelolaan Desa yang Transparan',
+            'GEULIS'
+            '\n (Gandang, Efektif dan Efisien, Unggul, Linuhung, Inovatif, Sejahtera)',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: screenHeight * 0.013 + screenWidth * 0.013,
+              fontSize: screenHeight * 0.012 + screenWidth * 0.012,
               fontWeight: FontWeight.w100,
             ),
           ),
@@ -72,6 +73,17 @@ class VisiMisi extends StatelessWidget {
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
                 fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '1. Mewujudkan kehidupan beragama dan berbudaya yang bertoleransi dan saling menghormati'
+            '\n 2. Terwujudnya Masyarakat yang sejahtera dengan perekonomian mandiri dengan meningkatkan ekonomi kerakyatan dan pariwisata berbasis ekonomi kreatif'
+            '\n 3. Mewujudkan tata kelola desa yang transparan, demokratis dan cepat tanggap dalam menampung aspirasi masyarakat'
+            '\n 4. Meningkatkan kesehatan, kebersihan Desa serta Mengusahakan Jaminan Kesehatan Masyarakat Melalui Program Pemerintah'
+            '\n 5. Mewujudkan masyarakat yang taat hukum berdasar pada UUD 1945 dan Pansasila',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: screenHeight * 0.012 + screenWidth * 0.012,
+                fontWeight: FontWeight.w100),
           ),
         ],
       ),
@@ -217,7 +229,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
               fontSize: screenWidth * 0.007 + screenHeight * 0.01,
               color: Colors.white,

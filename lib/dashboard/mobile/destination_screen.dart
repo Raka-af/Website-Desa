@@ -390,7 +390,7 @@ class Footer extends StatelessWidget {
             width: media.width * 0.02,
           ),
           Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:',
+            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
                 fontSize: screenWidth * 0.007 + screenHeight * 0.01,
                 color: Colors.white,
@@ -415,18 +415,30 @@ class Footer extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: <Widget>[
-                    Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://www.instagram.com/desamargalaksana_/'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/social.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://web.facebook.com/profile.php?id=61557585922362'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/facebook.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
                   ],
                 ),
