@@ -9,6 +9,7 @@ class DataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: <Widget>[
           DataJenisKelamin(),
@@ -40,7 +41,7 @@ class DataJenisKelamin extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           width: screenWidth * 0.9,
-          height: screenHeight * 0.3,
+          height: screenHeight * 0.27,
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
@@ -77,7 +78,7 @@ class DataJenisKelamin extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           width: screenWidth * 0.25,
-                          height: screenHeight * 0.2,
+                          height: screenHeight * 0.17,
 
                           //Laki Laki
                           child: Column(
@@ -91,7 +92,7 @@ class DataJenisKelamin extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                               ),
                               Image(
-                                image: AssetImage("assets/Penduduk/cowo.png"),
+                                image: AssetImage("assets/Penduduk/cowo.jpg"),
                                 width: screenWidth * 0.2,
                                 height: screenHeight * 0.1,
                               ),
@@ -130,7 +131,7 @@ class DataJenisKelamin extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               width: screenWidth * 0.25,
-                              height: screenHeight * 0.2,
+                              height: screenHeight * 0.17,
                               child: Column(
                                 children: <Widget>[
                                   Text(
@@ -143,7 +144,7 @@ class DataJenisKelamin extends StatelessWidget {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("assets/Penduduk/cewe.png"),
+                                        AssetImage("assets/Penduduk/cewe.jpg"),
                                     width: screenWidth * 0.2,
                                     height: screenHeight * 0.1,
                                   ),
@@ -184,7 +185,7 @@ class DataJenisKelamin extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               width: screenWidth * 0.25,
-                              height: screenHeight * 0.2,
+                              height: screenHeight * 0.17,
                               child: Column(
                                 children: <Widget>[
                                   Text(
@@ -197,7 +198,7 @@ class DataJenisKelamin extends StatelessWidget {
                                   ),
                                   Image(
                                     image: AssetImage(
-                                        "assets/Penduduk/Jumlah.png"),
+                                        "assets/Penduduk/Jumlah.jpg"),
                                     width: screenWidth * 0.2,
                                     height: screenHeight * 0.1,
                                   ),
@@ -247,7 +248,7 @@ class DataAgama extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           width: screenWidth * 0.9,
-          height: screenHeight * 0.3,
+          height: screenHeight * 0.27,
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: StreamBuilder<DocumentSnapshot>(
             stream: FirebaseFirestore.instance
@@ -284,7 +285,7 @@ class DataAgama extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         width: screenWidth * 0.25,
-                        height: screenHeight * 0.2,
+                        height: screenHeight * 0.17,
 
                         //Agama Islam
                         child: Column(
@@ -298,7 +299,7 @@ class DataAgama extends StatelessWidget {
                                   fontWeight: FontWeight.w500),
                             ),
                             Image(
-                              image: AssetImage("assets/Agama/Islam.png"),
+                              image: AssetImage("assets/Agama/Islam.jpg"),
                               width: screenWidth * 0.2,
                               height: screenHeight * 0.1,
                             ),
@@ -337,7 +338,7 @@ class DataAgama extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             width: screenWidth * 0.25,
-                            height: screenHeight * 0.2,
+                            height: screenHeight * 0.17,
                             child: Column(
                               children: <Widget>[
                                 Text(
@@ -349,7 +350,7 @@ class DataAgama extends StatelessWidget {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Image(
-                                  image: AssetImage("assets/Agama/Kristen.png"),
+                                  image: AssetImage("assets/Agama/Kristen.jpg"),
                                   width: screenWidth * 0.2,
                                   height: screenHeight * 0.1,
                                 ),
@@ -390,7 +391,7 @@ class DataAgama extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             width: screenWidth * 0.25,
-                            height: screenHeight * 0.2,
+                            height: screenHeight * 0.17,
                             child: Column(
                               children: <Widget>[
                                 Text(
@@ -402,7 +403,7 @@ class DataAgama extends StatelessWidget {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Image(
-                                  image: AssetImage("assets/Agama/Buddha.png"),
+                                  image: AssetImage("assets/Agama/Buddha.jpg"),
                                   width: screenWidth * 0.2,
                                   height: screenHeight * 0.1,
                                 ),
@@ -455,7 +456,7 @@ class DataPendidikan extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           width: screenWidth * 0.9,
-          height: screenHeight * 0.55,
+          height: screenHeight * 0.50,
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: StreamBuilder<DocumentSnapshot>(
             stream: FirebaseFirestore.instance
@@ -492,7 +493,7 @@ class DataPendidikan extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         width: screenWidth * 0.25,
-                        height: screenHeight * 0.2,
+                        height: screenHeight * 0.17,
 
                         //TK/Paud
                         child: Column(
@@ -506,7 +507,7 @@ class DataPendidikan extends StatelessWidget {
                                   fontWeight: FontWeight.w500),
                             ),
                             Image(
-                              image: AssetImage("assets/Pendidikan/Tk.png"),
+                              image: AssetImage("assets/Pendidikan/Tk.jpg"),
                               width: screenWidth * 0.2,
                               height: screenHeight * 0.1,
                             ),
@@ -545,7 +546,7 @@ class DataPendidikan extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             width: screenWidth * 0.25,
-                            height: screenHeight * 0.2,
+                            height: screenHeight * 0.17,
                             child: Column(
                               children: <Widget>[
                                 Text(
@@ -557,7 +558,7 @@ class DataPendidikan extends StatelessWidget {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Image(
-                                  image: AssetImage("assets/Pendidikan/Sd.png"),
+                                  image: AssetImage("assets/Pendidikan/Sd.jpg"),
                                   width: screenWidth * 0.2,
                                   height: screenHeight * 0.1,
                                 ),
@@ -598,7 +599,7 @@ class DataPendidikan extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             width: screenWidth * 0.25,
-                            height: screenHeight * 0.2,
+                            height: screenHeight * 0.17,
                             child: Column(
                               children: <Widget>[
                                 Text(
@@ -611,7 +612,7 @@ class DataPendidikan extends StatelessWidget {
                                 ),
                                 Image(
                                     image:
-                                        AssetImage("assets/Pendidikan/Smp.png"),
+                                        AssetImage("assets/Pendidikan/Smp.jpg"),
                                     width: screenWidth * 0.2,
                                     height: screenHeight * 0.1),
                                 Text(
@@ -657,7 +658,7 @@ class DataPendidikan extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 width: screenWidth * 0.25,
-                                height: screenHeight * 0.2,
+                                height: screenHeight * 0.17,
 
                                 //SMA
                                 child: Column(
@@ -672,7 +673,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                         image: AssetImage(
-                                            "assets/Pendidikan/Sma.png"),
+                                            "assets/Pendidikan/Sma.jpg"),
                                         width: screenWidth * 0.2,
                                         height: screenHeight * 0.1),
                                     Text(
@@ -713,7 +714,7 @@ class DataPendidikan extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 width: screenWidth * 0.25,
-                                height: screenHeight * 0.2,
+                                height: screenHeight * 0.17,
                                 child: Column(
                                   children: <Widget>[
                                     Text(
@@ -726,7 +727,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                         image: AssetImage(
-                                            "assets/Pendidikan/S1.png"),
+                                            "assets/Pendidikan/S1.jpg"),
                                         width: screenWidth * 0.2,
                                         height: screenHeight * 0.1),
                                     Text(
@@ -767,7 +768,7 @@ class DataPendidikan extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 width: screenWidth * 0.25,
-                                height: screenHeight * 0.2,
+                                height: screenHeight * 0.17,
                                 child: Column(
                                   children: <Widget>[
                                     Text(
@@ -780,7 +781,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                       image: AssetImage(
-                                          "assets/Pendidikan/S2.png"),
+                                          "assets/Pendidikan/S2.jpg"),
                                       width: screenWidth * 0.2,
                                       height: screenHeight * 0.1,
                                     ),

@@ -1,14 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:website_desa/dashboard/mobile/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GalleryScreen extends StatelessWidget {
-  const GalleryScreen({super.key});
+  const GalleryScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: [
           Gallery(),
@@ -19,7 +23,7 @@ class GalleryScreen extends StatelessWidget {
   }
 }
 
-//Gallery
+// Gallery Widget
 class Gallery extends StatefulWidget {
   const Gallery({super.key});
 
@@ -28,7 +32,7 @@ class Gallery extends StatefulWidget {
 }
 
 class _GalleryState extends State<Gallery> {
-  List<String> imageUrls = [];
+  List<Map<String, String>> images = [];
 
   @override
   void initState() {
@@ -37,61 +41,83 @@ class _GalleryState extends State<Gallery> {
   }
 
   Future<void> _loadImages() async {
-    List<String> urls = await FirestoreDatabase().getImages();
+    List<Map<String, String>> imageData = await FirestoreDatabase().getImages();
     setState(() {
-      imageUrls = urls;
+      images = imageData;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: 600,
-      width: double.infinity, // Use double.infinity to make it full width
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-      child: imageUrls.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Number of columns in the grid
-                crossAxisSpacing: 20, // Horizontal space between items
-                mainAxisSpacing: 20, // Vertical space between items
-              ),
-              itemCount: imageUrls.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  color: Color.fromARGB(77, 77, 77, 77),
-                  child: Image.network(
-                    imageUrls[index],
-                    width: 200,
-                    height: 100,
-                    fit: BoxFit.cover,
+    return SingleChildScrollView(
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: 600,
+        ),
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+        child: images.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : Column(
+                children: [
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                    ),
+                    itemCount: images.length,
+                    itemBuilder: (context, index) {
+                      return SingleChildScrollView(
+                        child: Container(
+                          color: Color.fromARGB(77, 77, 77, 77),
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            children: [
+                              Image.network(
+                                images[index]['url']!,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(
+                                  height: 8), // Space between image and text
+                              Text(
+                                images[index]['name']!,
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ],
+              ),
+      ),
     );
   }
 }
 
+// Firestore Database class
 class FirestoreDatabase {
-  Future<List<String>> getImages() async {
-    List<String> imageUrls = [];
+  Future<List<Map<String, String>>> getImages() async {
+    List<Map<String, String>> imageUrls = [];
 
     try {
-      final ListResult result = await FirebaseStorage.instance
-          .ref(
-              'images') // Pastikan ini folder di Firebase Storage tempat gambar kamu disimpan
-          .listAll();
+      // Fetch the collection from Firestore
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('images') // Your Firestore collection name
+          .get();
 
-      print('Jumlah gambar ditemukan: ${result.items.length}');
+      // Loop through each document
+      for (var doc in snapshot.docs) {
+        String url = doc['url'];
+        String name = doc['name'];
 
-      // Mendapatkan URL untuk setiap gambar
-      for (var ref in result.items) {
-        String url = await ref.getDownloadURL();
-        print('URL gambar: $url'); // Tambahkan log untuk setiap URL gambar
-        imageUrls.add(url);
+        // Add both url and name to the list
+        imageUrls.add({'url': url, 'name': name});
       }
     } catch (e) {
       print("Error fetching images: $e");

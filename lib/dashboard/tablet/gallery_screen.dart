@@ -54,7 +54,7 @@ class _GalleryState extends State<Gallery> {
           ? Center(child: CircularProgressIndicator())
           : GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, // Number of columns in the grid
+                crossAxisCount: 3, // Number of columns in the grid
                 crossAxisSpacing: 20, // Horizontal space between items
                 mainAxisSpacing: 20, // Vertical space between items
               ),
@@ -64,7 +64,7 @@ class _GalleryState extends State<Gallery> {
                   color: Color.fromARGB(77, 77, 77, 77),
                   child: Image.network(
                     imageUrls[index],
-                    width: 200,
+                    width: 250,
                     height: 100,
                     fit: BoxFit.cover,
                   ),

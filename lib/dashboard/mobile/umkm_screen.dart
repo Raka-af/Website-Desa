@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:website_desa/dashboard/mobile/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,6 +10,7 @@ class UmkmScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: <Widget>[
           Umkm(),
@@ -19,95 +21,101 @@ class UmkmScreen extends StatelessWidget {
   }
 }
 
-//Umkm
-class Umkm extends StatelessWidget {
+class Umkm extends StatefulWidget {
   const Umkm({super.key});
 
   @override
+  State<Umkm> createState() => _UmkmState();
+}
+
+class _UmkmState extends State<Umkm> {
+  List<String> imageUrls = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImages();
+  }
+
+  Future<void> _loadImages() async {
+    List<String> urls = await FirestoreDatabase().getImages();
+    setState(() {
+      imageUrls = urls;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
-      color: Colors.white,
-      width: screenWidth * 1,
-      height: screenHeight * 0.71,
-      child: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("data_umkm").snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Text("Loading");
-          } else {
-            return Column(
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection("data_umkm").snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData || imageUrls.isEmpty) {
+          return Center(child: CircularProgressIndicator());
+        } else {
+          final documents = snapshot.data!.docs;
+
+          // Pastikan jumlah dokumen dan gambar sama untuk mencegah error
+          final itemCount = documents.length < imageUrls.length
+              ? documents.length
+              : imageUrls.length;
+
+          return Container(
+            color: Colors.white,
+            constraints: BoxConstraints(
+              minHeight: 600, // Set tinggi awal minimum
+            ),
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Data UMKM',
-                  style: TextStyle(
-                      fontSize: screenWidth * 0.015 + screenHeight * 0.015,
-                      color: Colors.black),
-                ),
-                Container(
-                  height: screenWidth * 0.002,
-                  width: screenHeight * 0.2,
-                  color: Colors.black,
-                  margin: EdgeInsets.only(top: 8),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Expanded(
-                  // Menggunakan Expanded agar ListView bisa mengambil ruang yang tersisa
-                  child: ListView(
-                    children:
-                        snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data =
-                          document.data()! as Map<String, dynamic>;
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 20.0),
+              children: List.generate(
+                itemCount,
+                (index) {
+                  Map<String, dynamic> data =
+                      documents[index].data()! as Map<String, dynamic>;
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        color: Color.fromARGB(77, 77, 77, 77),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         child: Row(
                           children: [
-                            Image(
-                              image: AssetImage("assets/Umkm/Keripik.jpg"),
-                              width: screenWidth * 0.3,
-                              height: screenHeight * 0.1,
+                            Image.network(
+                              imageUrls[index], // Ambil URL gambar sesuai index
+                              width: 100,
+                              height: 100,
                               fit: BoxFit.cover,
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                            SizedBox(width: 20),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  data['jenis'],
+                                  data['jenis'] ?? 'Jenis tidak tersedia',
                                   style: TextStyle(
-                                      fontSize: screenWidth * 0.012 +
-                                          screenHeight * 0.012,
-                                      color: Colors.black),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
                                 ),
+                                SizedBox(height: 5),
                                 Row(
                                   children: [
-                                    Icon(Icons.person),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
+                                    Icon(Icons.person, size: 14),
+                                    SizedBox(width: 5),
                                     Text(
-                                      data['nama'],
+                                      data['nama'] ?? 'Nama tidak tersedia',
                                       style: TextStyle(fontSize: 12),
                                     ),
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Icon(Icons.location_on),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
+                                    Icon(Icons.location_on, size: 14),
+                                    SizedBox(width: 5),
                                     Text(
-                                      data['alamat'],
+                                      data['alamat'] ?? 'Alamat tidak tersedia',
                                       style: TextStyle(fontSize: 12),
                                     ),
                                   ],
@@ -116,18 +124,158 @@ class Umkm extends StatelessWidget {
                             ),
                           ],
                         ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ],
-            );
-          }
-        },
-      ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  );
+                },
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }
+
+class FirestoreDatabase {
+  Future<List<String>> getImages() async {
+    List<String> imageUrls = [];
+
+    try {
+      final ListResult result = await FirebaseStorage.instance
+          .ref('umkm') // Folder di Firebase Storage tempat gambar disimpan
+          .listAll();
+
+      print('Jumlah gambar ditemukan: ${result.items.length}');
+
+      // Mendapatkan URL untuk setiap gambar
+      for (var ref in result.items) {
+        String url = await ref.getDownloadURL();
+        print('URL gambar: $url');
+        imageUrls.add(url);
+      }
+    } catch (e) {
+      print("Error fetching umkm: $e");
+    }
+
+    return imageUrls;
+  }
+}
+//Umkm
+// class Umkm extends StatelessWidget {
+//   const Umkm({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final screenWidth = MediaQuery.of(context).size.width;
+//     final screenHeight = MediaQuery.of(context).size.height;
+//     return Container(
+//       padding: EdgeInsets.symmetric(
+//         horizontal: 10,
+//       ),
+//       color: Colors.white,
+//       width: screenWidth * 1,
+//       height: screenHeight * 0.71,
+//       child: StreamBuilder(
+//         stream: FirebaseFirestore.instance.collection("data_umkm").snapshots(),
+//         builder: (context, snapshot) {
+//           if (!snapshot.hasData) {
+//             return Center(child: CircularProgressIndicator());
+//           } else {
+//             return Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text(
+//                   'Data UMKM',
+//                   style: TextStyle(
+//                       fontSize: screenWidth * 0.015 + screenHeight * 0.015,
+//                       color: Colors.black),
+//                 ),
+//                 Container(
+//                   height: screenWidth * 0.002,
+//                   width: screenHeight * 0.2,
+//                   color: Colors.black,
+//                   margin: EdgeInsets.only(top: 8),
+//                 ),
+//                 SizedBox(
+//                   height: 10,
+//                 ),
+//                 Expanded(
+//                   child: ListView(
+//                     children:
+//                         snapshot.data!.docs.map((DocumentSnapshot document) {
+//                       Map<String, dynamic> data =
+//                           document.data()! as Map<String, dynamic>;
+//                       return Column(
+//                         children: [
+//                           Row(
+//                             children: [
+//                               Image.network(
+//                                 data['imageUrl'] ??
+//                                     'https://firebasestorage.googleapis.com/v0/b/flutter-web-connection-5b8e3.appspot.com/o/images%2F2.jpg?alt=media&token=1543460b-627e-426f-a62a-2fc81c2c1a28', // Ganti dengan URL gambar dari Firestore
+//                                 width: screenWidth * 0.3,
+//                                 height: screenHeight * 0.1,
+//                                 fit: BoxFit.cover,
+//                               ),
+//                               SizedBox(
+//                                 width: 10,
+//                               ),
+//                               Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   Text(
+//                                     data['jenis'] ?? 'Jenis tidak tersedia',
+//                                     style: TextStyle(
+//                                         fontSize: screenWidth * 0.012 +
+//                                             screenHeight * 0.012,
+//                                         color: Colors.black),
+//                                   ),
+//                                   Row(
+//                                     children: [
+//                                       Icon(Icons.person),
+//                                       SizedBox(
+//                                         width: 3,
+//                                       ),
+//                                       Text(
+//                                         data['nama'] ?? 'Nama tidak tersedia',
+//                                         style: TextStyle(fontSize: 12),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                   Row(
+//                                     children: [
+//                                       Icon(Icons.location_on),
+//                                       SizedBox(
+//                                         width: 3,
+//                                       ),
+//                                       Text(
+//                                         data['alamat'] ??
+//                                             'Alamat tidak tersedia',
+//                                         style: TextStyle(fontSize: 12),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                 ],
+//                               ),
+//                             ],
+//                           ),
+//                           SizedBox(
+//                             height: 20,
+//                           ),
+//                         ],
+//                       );
+//                     }).toList(),
+//                   ),
+//                 ),
+//               ],
+//             );
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }
 
 //Footer
 class Footer extends StatelessWidget {

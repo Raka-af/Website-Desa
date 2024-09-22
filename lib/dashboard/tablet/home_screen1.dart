@@ -71,7 +71,7 @@ class FacilitySection extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 30),
       color: Colors.white,
       width: 1500,
-      height: screenHeight * 0.6,
+      height: screenHeight * 0.5,
       child: Column(
         children: <Widget>[
           Text(
@@ -155,7 +155,7 @@ class FacilitySection extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image(
-                      image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                      image: AssetImage("assets/Desa/Sentra Kuliner.jpg"),
                       width: screenWidth * 0.3,
                       height: screenHeight * 0.2,
                       fit: BoxFit.cover,
@@ -165,7 +165,7 @@ class FacilitySection extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Gedung Perpustakaan',
+                    'Sentra Kuliner Margalaksana',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: screenHeight * 0.01 + screenWidth * 0.01,
@@ -218,7 +218,7 @@ class FacilitySection extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image(
-                      image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                      image: AssetImage("assets/Desa/Polindes.jpg"),
                       width: screenWidth * 0.3,
                       height: screenHeight * 0.2,
                       fit: BoxFit.cover,
@@ -298,10 +298,9 @@ class Footer extends StatelessWidget {
           Text(
             'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
             style: TextStyle(
-                fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-                color: Colors.white,
-                fontFamily: 'SFUi',
-                fontWeight: FontWeight.w500),
+              fontSize: screenWidth * 0.007 + screenHeight * 0.01,
+              color: Colors.white,
+            ),
           ),
           (MediaQuery.of(context).size.width > 750)
               ? SizedBox(width: screenWidth * 0.45)
@@ -314,10 +313,9 @@ class Footer extends StatelessWidget {
               Text(
                 'Media Sosial',
                 style: TextStyle(
-                    fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-                    color: Colors.white,
-                    fontFamily: 'SFUi',
-                    fontWeight: FontWeight.w500),
+                  fontSize: screenWidth * 0.007 + screenHeight * 0.01,
+                  color: Colors.white,
+                ),
               ),
               Row(
                 children: <Widget>[

@@ -32,7 +32,7 @@ class VisiMisi extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: screenWidth / 1,
-      height: screenHeight / 1.1,
+      height: screenHeight / 1.2,
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
         children: <Widget>[
@@ -45,7 +45,7 @@ class VisiMisi extends StatelessWidget {
             'Desa Margalaksana',
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
-                fontWeight: FontWeight.w600),
+                fontFamily: 'Montserrat'),
           ),
           SizedBox(
             height: 20,
@@ -54,7 +54,7 @@ class VisiMisi extends StatelessWidget {
             'Visi',
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
-                fontWeight: FontWeight.bold),
+                fontFamily: 'Montserrat'),
           ),
           SizedBox(
             height: 5,
@@ -65,7 +65,7 @@ class VisiMisi extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: screenHeight * 0.013 + screenWidth * 0.013,
-              fontWeight: FontWeight.w100,
+              fontWeight: FontWeight.w400,
             ),
           ),
           SizedBox(
@@ -75,7 +75,7 @@ class VisiMisi extends StatelessWidget {
             'Misi',
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
-                fontWeight: FontWeight.bold),
+                fontFamily: 'Montserrat'),
           ),
           Text(
             '1. Mewujudkan kehidupan beragama dan berbudaya yang bertoleransi dan saling menghormati'
@@ -86,7 +86,7 @@ class VisiMisi extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: screenHeight * 0.012 + screenWidth * 0.012,
-              fontWeight: FontWeight.w100,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ],
@@ -108,7 +108,7 @@ class Sejarah extends StatelessWidget {
       padding: EdgeInsets.all(30),
       color: Colors.white,
       width: screenWidth / 1,
-      height: screenHeight / 1.5,
+      height: screenHeight / 1.4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -116,22 +116,18 @@ class Sejarah extends StatelessWidget {
             'Sejarah Desa Margalaksana',
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
-                fontWeight: FontWeight.w500),
+                fontFamily: 'Montserrat'),
           ),
           SizedBox(
             height: media.height * 0.02,
           ),
-          Center(
-            child: Flexible(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  image: AssetImage("assets/Desa/Margalaksana.jpg"),
-                  width: screenWidth * 0.35,
-                  height: screenHeight * 0.20,
-                  fit: BoxFit.cover,
-                ),
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: Image(
+              image: AssetImage("assets/Desa/Margalaksana.jpg"),
+              width: screenWidth * 0.70,
+              height: screenHeight * 0.30,
+              fit: BoxFit.cover,
             ),
           ),
           SizedBox(
@@ -152,7 +148,7 @@ class Sejarah extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: screenHeight * 0.01 + screenWidth * 0.01,
-                fontWeight: FontWeight.w300),
+                fontWeight: FontWeight.w400),
           ),
           (MediaQuery.of(context).size.width > 800)
               ? SizedBox(width: screenWidth * 0.1)
@@ -175,14 +171,14 @@ class Maps extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: 1500,
-      height: 600,
+      height: 450,
       child: Column(
         children: <Widget>[
           Text(
             'Peta Desa Margalaksana',
             style: TextStyle(
                 fontSize: screenHeight * 0.015 + screenWidth * 0.015,
-                fontWeight: FontWeight.w500),
+                fontFamily: 'Montserrat'),
           ),
           SizedBox(
             height: media.height * 0.02,
@@ -192,9 +188,9 @@ class Maps extends StatelessWidget {
               launchUrl(Uri.parse('https://maps.app.goo.gl/2kgwu2MBpEym6sY56'))
             },
             child: Image(
-              image: AssetImage("assets/Desa/maps.png"),
-              width: screenWidth * 0.5,
-              height: screenHeight * 0.6,
+              image: AssetImage("assets/Desa/Maps.jpg"),
+              width: screenWidth * 0.70,
+              height: screenHeight * 0.40,
               fit: BoxFit.cover,
             ),
           ),
@@ -211,7 +207,7 @@ class Maps extends StatelessWidget {
             'Luas wilayah: 508,17 hektar',
             style: TextStyle(
                 fontSize: screenHeight * 0.01 + screenWidth * 0.01,
-                fontWeight: FontWeight.w500),
+                fontWeight: FontWeight.w400),
           )
         ],
       ),

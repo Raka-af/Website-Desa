@@ -3,19 +3,20 @@ import 'package:website_desa/dashboard/desktop/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required int selectedIndex});
 
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      // showBackButton: false,
       body: Column(
         children: <Widget>[
           HeroSection(),
           FacilitySection(),
           Footer(),
-          // Tambahkan lebih banyak halaman di sini jika diperlukan
         ],
       ),
+      selectedIndex: 0,
     );
   }
 }
@@ -42,11 +43,10 @@ class HeroSection extends StatelessWidget {
               left: screenWidth * 0.2,
               right: screenWidth * 0.2,
               child: Text(
-                'Selamat Datang\n'
+                ' Selamat Datang\n'
                 ' Website Desa Margalaksana',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  backgroundColor: Colors.black12,
                   fontSize: screenHeight * 0.02 + screenWidth * 0.025,
                   color: Colors.white,
                   fontFamily: 'Montserrat',
@@ -68,10 +68,9 @@ class FacilitySection extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      padding: EdgeInsets.only(top: 30, bottom: 70, left: 10, right: 10),
       color: Colors.white,
       width: 1500,
-      height: 450,
       child: Column(
         children: <Widget>[
           Text(
@@ -137,14 +136,13 @@ class FacilitySection extends StatelessWidget {
 
               SizedBox(width: 20),
 
-              //
               Expanded(
                 child: Column(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
                       child: Image(
-                        image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                        image: AssetImage("assets/Desa/Sentra Kuliner.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -152,7 +150,7 @@ class FacilitySection extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Gedung Perpustakaan',
+                      'Sentra Kuliner Margalaksana',
                       style: TextStyle(
                           fontSize: screenHeight * 0.01 + screenWidth * 0.01,
                           color: Colors.black,
@@ -196,7 +194,7 @@ class FacilitySection extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
                       child: Image(
-                        image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                        image: AssetImage("assets/Desa/Polindes.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -253,69 +251,64 @@ class Footer extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     var media = MediaQuery.of(context).size;
-    return Container(
-      color: Colors.black54,
-      width: screenWidth * 1,
-      height: screenHeight * 0.2,
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: media.width * 0.02,
-          ),
-          Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
-            style: TextStyle(
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(top: 20, bottom: 10, left: 10),
+        color: Colors.black54,
+        width: screenWidth * 1,
+        child: Row(
+          children: <Widget>[
+            Text(
+              'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
+              style: TextStyle(
                 fontSize: screenWidth * 0.007 + screenHeight * 0.01,
                 color: Colors.white,
-                fontFamily: 'SFUi',
-                fontWeight: FontWeight.w500),
-          ),
-          (MediaQuery.of(context).size.width > 750)
-              ? SizedBox(width: screenWidth * 0.45)
-              : SizedBox(width: screenWidth * 0.25),
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: media.height * 0.03,
               ),
-              Text(
-                'Media Sosial',
-                style: TextStyle(
+            ),
+            (MediaQuery.of(context).size.width > 750)
+                ? SizedBox(width: screenWidth * 0.45)
+                : SizedBox(width: screenWidth * 0.25),
+            Column(
+              children: <Widget>[
+                Text(
+                  'Media Sosial',
+                  style: TextStyle(
                     fontSize: screenWidth * 0.007 + screenHeight * 0.01,
                     color: Colors.white,
-                    fontFamily: 'SFUi',
-                    fontWeight: FontWeight.w500),
-              ),
-              Row(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => launchUrl(
-                      Uri.parse('https://www.instagram.com/desamargalaksana_/'),
-                    ),
-                    child: Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
                   ),
-                  InkWell(
-                    onTap: () => launchUrl(
-                      Uri.parse(
-                          'https://web.facebook.com/profile.php?id=61557585922362'),
+                ),
+                Row(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://www.instagram.com/desamargalaksana_/'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/social.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
-                    child: Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                            'https://web.facebook.com/profile.php?id=61557585922362'),
+                      ),
+                      child: Image(
+                        image: AssetImage("assets/Desa/facebook.png"),
+                        width: screenWidth * 0.045,
+                        height: screenHeight * 0.045,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-          ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
+                  ],
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.start,
+            ),
+          ],
+          crossAxisAlignment: CrossAxisAlignment.center,
+        ),
       ),
     );
   }

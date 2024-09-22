@@ -10,9 +10,14 @@ import 'package:website_desa/dashboard/mobile/struktur_screen.dart';
 import 'package:website_desa/dashboard/mobile/home_screen.dart';
 
 class LayoutScreen extends StatelessWidget {
-  const LayoutScreen({super.key, required this.body});
+  const LayoutScreen({
+    super.key,
+    required this.body,
+    this.showBackButton = true,
+  });
 
   final Widget body;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +27,12 @@ class LayoutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        automaticallyImplyLeading: showBackButton,
         title: Row(
           children: [
             Image(
               image: AssetImage(
-                "assets/Desa/Logo.jpg",
+                "assets/Desa/Logo-remove.png",
               ),
               width: screenWidth * 0.07,
               height: screenHeight * 0.07,
@@ -48,7 +54,7 @@ class LayoutScreen extends StatelessWidget {
           children: [
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => HomeScreen2()),
                       ),
@@ -59,7 +65,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => ProfileScreen()),
@@ -71,7 +77,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => DataScreen()),
                       ),
@@ -82,7 +88,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => StructureScreen(),
@@ -95,7 +101,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => DestinationScreen(),
@@ -108,7 +114,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => UmkmScreen(),
@@ -121,7 +127,7 @@ class LayoutScreen extends StatelessWidget {
             ),
             ListTile(
               title: InkWell(
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GalleryScreen(),

@@ -32,7 +32,7 @@ class _LoginAdminState extends State<LoginAdmin> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Login Failed'),
+          content: Text('Login Gagal, silahkan cek lagi email dan password'),
         ),
       );
     }
@@ -52,18 +52,16 @@ class _LoginAdminState extends State<LoginAdmin> {
           borderRadius: BorderRadius.circular(20),
           child: Container(
             width: 400,
-            height: 450,
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            color: const Color.fromARGB(255, 79, 125, 163),
+            height: 470,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            color: Color.fromARGB(255, 104, 153, 193),
             child: Form(
               key: _formkey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Image(
-                    image: AssetImage('assets/Desa/Logo.jpg'),
+                    image: AssetImage('assets/Desa/Logo-remove.png'),
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,
@@ -72,16 +70,14 @@ class _LoginAdminState extends State<LoginAdmin> {
                     'Admin Desa Margalaksana',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
+                  SizedBox(height: 40),
                   InputText(
                     textEditingController: _emailController,
                     hintText: "Email",
                     textInputType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter your email";
+                        return "Masukkan email Anda";
                       }
                       return null;
                     },
@@ -93,12 +89,13 @@ class _LoginAdminState extends State<LoginAdmin> {
                     textInputType: TextInputType.text,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter your password";
+                        return "Masukkan password Anda";
                       } else if (value.length < 6) {
-                        return "Password must be at least 6 characters";
+                        return "Password harus lebih dari 6 karakter";
                       }
                       return null;
                     },
+                    obscureText: true, // Sembunyikan teks password
                   ),
                   SizedBox(height: 10),
                   CustomButton(
@@ -110,15 +107,15 @@ class _LoginAdminState extends State<LoginAdmin> {
                       }
                     },
                   ),
-                  CustomButton(
-                    title: ('Register'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RegistAdmin()),
-                      );
-                    },
-                  ),
+                  // CustomButton(
+                  //   title: ('Register'),
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) => RegistAdmin()),
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
             ),

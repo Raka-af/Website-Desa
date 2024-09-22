@@ -8,6 +8,7 @@ class HomeScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: <Widget>[
           HeroSection(),
@@ -46,7 +47,6 @@ class HeroSection extends StatelessWidget {
                 ' Website Desa Margalaksana',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  backgroundColor: Colors.black12,
                   fontSize: screenHeight * 0.02 + screenWidth * 0.02,
                   color: Colors.white,
                   fontFamily: 'Montserrat',
@@ -141,7 +141,7 @@ class FacilitySection extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image(
-                      image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                      image: AssetImage("assets/Desa/Sentra Kuliner.jpg"),
                       width: screenWidth * 0.8,
                       height: screenHeight * 0.15,
                       fit: BoxFit.cover,
@@ -151,7 +151,7 @@ class FacilitySection extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Gedung Perpustakaan',
+                    'Sentra Kuliner Margalaksana',
                     style: TextStyle(
                         fontSize: screenHeight * 0.01 + screenWidth * 0.01,
                         color: Colors.black,
@@ -193,7 +193,7 @@ class FacilitySection extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image(
-                      image: AssetImage("assets/Desa/Margalaksana.jpg"),
+                      image: AssetImage("assets/Desa/Polindes.jpg"),
                       width: screenWidth * 0.8,
                       height: screenHeight * 0.15,
                       fit: BoxFit.cover,

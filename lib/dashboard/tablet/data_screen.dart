@@ -96,7 +96,7 @@ class DataJenisKelamin extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                               ),
                               Image(
-                                image: AssetImage("Assets/Penduduk/cowo.png"),
+                                image: AssetImage("assets/Penduduk/cowo.jpg"),
                                 width: screenWidth * 0.15,
                                 height: screenHeight * 0.15,
                               ),
@@ -153,7 +153,7 @@ class DataJenisKelamin extends StatelessWidget {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Penduduk/cewe.png"),
+                                        AssetImage("assets/Penduduk/cewe.jpg"),
                                     width: screenWidth * 0.15,
                                     height: screenHeight * 0.15,
                                   ),
@@ -212,7 +212,7 @@ class DataJenisKelamin extends StatelessWidget {
                                   ),
                                   Image(
                                     image: AssetImage(
-                                        "Assets/Penduduk/Jumlah.png"),
+                                        "assets/Penduduk/Jumlah.jpg"),
                                     width: screenWidth * 0.15,
                                     height: screenHeight * 0.15,
                                   ),
@@ -313,7 +313,7 @@ class DataAgama extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                               ),
                               Image(
-                                image: AssetImage("Assets/Agama/Islam.png"),
+                                image: AssetImage("assets/Agama/Islam.jpg"),
                                 width: screenWidth * 0.15,
                                 height: screenHeight * 0.15,
                               ),
@@ -367,7 +367,7 @@ class DataAgama extends StatelessWidget {
                                     ),
                                     Image(
                                       image: AssetImage(
-                                          "Assets/Agama/Kristen.png"),
+                                          "assets/Agama/Kristen.jpg"),
                                       width: screenWidth * 0.15,
                                       height: screenHeight * 0.15,
                                     ),
@@ -422,7 +422,7 @@ class DataAgama extends StatelessWidget {
                                     ),
                                     Image(
                                       image:
-                                          AssetImage("Assets/Agama/Buddha.png"),
+                                          AssetImage("assets/Agama/Buddha.jpg"),
                                       width: screenWidth * 0.15,
                                       height: screenHeight * 0.15,
                                     ),
@@ -524,7 +524,7 @@ class DataPendidikan extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                               ),
                               Image(
-                                image: AssetImage("Assets/Pendidikan/TK.png"),
+                                image: AssetImage("assets/Pendidikan/TK.jpg"),
                                 width: screenWidth * 0.15,
                                 height: screenHeight * 0.15,
                               ),
@@ -576,7 +576,7 @@ class DataPendidikan extends StatelessWidget {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Pendidikan/SD.png"),
+                                        AssetImage("assets/Pendidikan/SD.jpg"),
                                     width: screenWidth * 0.15,
                                     height: screenHeight * 0.15,
                                   ),
@@ -630,7 +630,7 @@ class DataPendidikan extends StatelessWidget {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Pendidikan/SMP.png"),
+                                        AssetImage("assets/Pendidikan/SMP.jpg"),
                                     width: screenWidth * 0.15,
                                     height: screenHeight * 0.15,
                                   ),
@@ -692,7 +692,7 @@ class DataPendidikan extends StatelessWidget {
                                       ),
                                       Image(
                                         image: AssetImage(
-                                            "Assets/Pendidikan/SMA.png"),
+                                            "assets/Pendidikan/SMA.jpg"),
                                         width: screenWidth * 0.15,
                                         height: screenHeight * 0.15,
                                       ),
@@ -747,7 +747,7 @@ class DataPendidikan extends StatelessWidget {
                                       ),
                                       Image(
                                         image: AssetImage(
-                                            "Assets/Pendidikan/S1.png"),
+                                            "assets/Pendidikan/S1.jpg"),
                                         width: screenWidth * 0.15,
                                         height: screenHeight * 0.15,
                                       ),
@@ -802,7 +802,7 @@ class DataPendidikan extends StatelessWidget {
                                       ),
                                       Image(
                                         image: AssetImage(
-                                            "Assets/Pendidikan/S2.png"),
+                                            "assets/Pendidikan/S2.jpg"),
                                         width: screenWidth * 0.15,
                                         height: screenHeight * 0.15,
                                       ),

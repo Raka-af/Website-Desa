@@ -76,11 +76,13 @@ class _DataPendudukState extends State<DataPenduduk> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Data Penduduk'),
+        backgroundColor: Colors.white,
       ),
 
       //Data Jenis Kelamin
       body: Container(
         padding: EdgeInsets.all(30),
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -163,15 +165,6 @@ class _DataPendudukState extends State<DataPenduduk> {
                             },
                             child: Text('Update'),
                           ),
-                          // ElevatedButton(
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor: Colors.orange,
-                          //   ),
-                          //   onPressed: () {
-                          //     createJenisKelamin();
-                          //   },
-                          //   child: Text('Created'),
-                          // ),
                         ],
                       ),
                       StreamBuilder(
@@ -294,15 +287,6 @@ class _DataPendudukState extends State<DataPenduduk> {
                             },
                             child: Text('Update'),
                           ),
-                          // ElevatedButton(
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor: Colors.orange,
-                          //   ),
-                          //   onPressed: () {
-                          //     createAgama();
-                          //   },
-                          //   child: Text('Created'),
-                          // ),
                         ],
                       ),
                       StreamBuilder(
@@ -425,15 +409,6 @@ class _DataPendudukState extends State<DataPenduduk> {
                             },
                             child: Text('Update'),
                           ),
-                          // ElevatedButton(
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor: Colors.orange,
-                          //   ),
-                          //   onPressed: () {
-                          //     createPendidikan();
-                          //   },
-                          //   child: Text('Created'),
-                          // ),
                         ],
                       ),
                       StreamBuilder(

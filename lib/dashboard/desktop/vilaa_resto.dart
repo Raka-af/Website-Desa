@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website_desa/dashboard/desktop/home_screen.dart';
 import 'package:website_desa/dashboard/desktop/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,12 +9,14 @@ class VillaResto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      // showBackButton: false,
       body: Column(
         children: [
           Villa(),
           Footer(),
         ],
       ),
+      selectedIndex: 4,
     );
   }
 }
@@ -46,15 +49,14 @@ class Villa extends StatelessWidget {
             height: 30,
           ),
           Center(
-            child: Container(
-              width: 750,
-              height: 820,
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color.fromARGB(77, 77, 77, 77),
-              ),
-              child: Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                width: 750,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(77, 77, 77, 77),
+                ),
                 child: Column(
                   children: [
                     ClipRRect(
@@ -81,10 +83,55 @@ class Villa extends StatelessWidget {
                       'dengan pemandangan indah ladang dan taman yang menenangkan.'
                       'Selain itu, tersedia juga area outdoor yang memungkinkan pengunjung'
                       'untuk menikmati udara segar sambil menikmati hidangan mereka.',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.call),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        InkWell(
+                          onTap: () => {
+                            launchUrl(
+                              Uri.parse('https://wa.me/628112279595'),
+                            ),
+                          },
+                          child: Text(
+                            '08112279595',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on_outlined),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        InkWell(
+                          onTap: () => {
+                            launchUrl(
+                              Uri.parse(
+                                  'https://maps.app.goo.gl/1H9jD21QZyvkqneU7'),
+                            ),
+                          },
+                          child: Text(
+                            'Lokasi',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Row(
                       children: [
@@ -131,75 +178,6 @@ class Villa extends StatelessWidget {
           ),
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
-      ),
-    );
-  }
-}
-
-//Footer
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    var media = MediaQuery.of(context).size;
-    return Container(
-      color: Colors.black54,
-      width: screenWidth * 1,
-      height: screenHeight * 0.2,
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: media.width * 0.02,
-          ),
-          Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
-            style: TextStyle(
-              fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-              color: Colors.white,
-            ),
-          ),
-          (MediaQuery.of(context).size.width > 750)
-              ? SizedBox(width: screenWidth * 0.45)
-              : SizedBox(width: screenWidth * 0.25),
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: media.height * 0.03,
-              ),
-              Text(
-                'Media Sosial',
-                style: TextStyle(
-                    fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-                    color: Colors.white),
-              ),
-              Row(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://www.instagram.com/desamargalaksana_/')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://web.facebook.com/profile.php?id=61557585922362')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-          ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     );
   }

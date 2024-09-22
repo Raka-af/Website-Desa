@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:website_desa/dashboard/tablet/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,107 +21,137 @@ class UmkmScreen extends StatelessWidget {
 }
 
 //Umkm
-class Umkm extends StatelessWidget {
+class Umkm extends StatefulWidget {
   const Umkm({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      color: Colors.white,
-      width: 1500,
-      height: 1200,
-      child: StreamBuilder(
-          stream:
-              FirebaseFirestore.instance.collection("data_umkm").snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Text("Loading");
-            } else {}
-            return Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Data UMKM',
-                    style: TextStyle(
-                        fontSize: screenWidth * 0.015 + screenHeight * 0.015,
-                        color: Colors.black),
-                  ),
-                  Container(
-                    height: screenWidth * 0.002,
-                    width: screenHeight * 0.2,
-                    color: Colors.black,
-                    margin: EdgeInsets.only(top: 8),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
+  State<Umkm> createState() => _UmkmState();
+}
 
-                  //
-                  Column(
-                    children:
-                        snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data =
-                          document.data()! as Map<String, dynamic>;
-                      return Column(
-                        children: [
-                          Row(
-                            children: [
-                              Image(
-                                image: AssetImage("assets/Umkm/Keripik.jpg"),
-                                width: screenWidth * 0.2,
-                                height: screenHeight * 0.2,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                children: [
-                                  Text(
-                                    data['jenis'],
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.014 +
-                                            screenHeight * 0.014,
-                                        color: Colors.black),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.person),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(data['nama']),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.location_on),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(data['alamat']),
-                                    ],
-                                  ),
-                                ],
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-            );
-          }),
+class _UmkmState extends State<Umkm> {
+  List<String> imageUrls = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImages();
+  }
+
+  Future<void> _loadImages() async {
+    List<String> urls = await FirestoreDatabase().getImages();
+    setState(() {
+      imageUrls = urls;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection("data_umkm").snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData || imageUrls.isEmpty) {
+          return Center(child: CircularProgressIndicator());
+        } else {
+          final documents = snapshot.data!.docs;
+
+          // Pastikan jumlah dokumen dan gambar sama untuk mencegah error
+          final itemCount = documents.length < imageUrls.length
+              ? documents.length
+              : imageUrls.length;
+
+          return Container(
+            color: Colors.white,
+            height: 600,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            child: ListView.builder(
+              itemCount: itemCount, // Tampilkan berdasarkan jumlah terkecil
+              itemBuilder: (context, index) {
+                Map<String, dynamic> data =
+                    documents[index].data()! as Map<String, dynamic>;
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Image.network(
+                          imageUrls[index], // Ambil URL gambar sesuai index
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(data['jenis'] ?? 'Jenis tidak tersedia'),
+                            Row(
+                              children: [
+                                Icon(Icons.person),
+                                SizedBox(
+                                  width: 3,
+                                ),
+                                Text(
+                                  data['nama'] ?? 'Nama tidak tersedia',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(Icons.location_on),
+                                SizedBox(
+                                  width: 3,
+                                ),
+                                Text(
+                                  data['alamat'] ?? 'Alamat tidak tersedia',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                );
+              },
+            ),
+          );
+        }
+      },
     );
+  }
+}
+
+class FirestoreDatabase {
+  Future<List<String>> getImages() async {
+    List<String> imageUrls = [];
+
+    try {
+      final ListResult result = await FirebaseStorage.instance
+          .ref('umkm') // Folder di Firebase Storage tempat gambar disimpan
+          .listAll();
+
+      print('Jumlah gambar ditemukan: ${result.items.length}');
+
+      // Mendapatkan URL untuk setiap gambar
+      for (var ref in result.items) {
+        String url = await ref.getDownloadURL();
+        print('URL gambar: $url');
+        imageUrls.add(url);
+      }
+    } catch (e) {
+      print("Error fetching umkm: $e");
+    }
+
+    return imageUrls;
   }
 }
 

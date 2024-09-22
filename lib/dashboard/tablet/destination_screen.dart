@@ -64,97 +64,95 @@ class Destinasi extends StatelessWidget {
                   width: 400,
                   height: 470,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image(
-                            image: AssetImage("assets/KampungLadang/Taman.jpg"),
-                            width: 378,
-                            fit: BoxFit.cover,
-                          ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          image: AssetImage("assets/KampungLadang/Taman.jpg"),
+                          width: 378,
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: Text(
-                            'Kampoeng Ladang',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Text(
-                          'Kampoeng Ladang adalah sebuah rumah makan khas Sunda yang diolah dari'
-                          'bahan bahan segar hasil dari bumi lokal. Di Kampoeng Ladang,'
-                          'Anda bisa menikmati berbagai sajian khas seperti nasi liwet, ikan bakar,'
-                          'pepes, karedok, hingga sambal terasi',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: Text(
+                          'Kampoeng Ladang',
                           style: TextStyle(
-                            fontSize: 14,
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Text(
+                        'Kampoeng Ladang adalah sebuah rumah makan khas Sunda yang diolah dari'
+                        'bahan bahan segar hasil dari bumi lokal. Di Kampoeng Ladang,'
+                        'Anda bisa menikmati berbagai sajian khas seperti nasi liwet, ikan bakar,'
+                        'pepes, karedok, hingga sambal terasi',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_month_rounded),
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.calendar_month_rounded),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('Senin-Minggu')
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.access_time),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('08.00-17.00'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            InkWell(
-                                onTap: () => {
-                                      launchUrl(
-                                        Uri.parse(
-                                            'https://maps.app.goo.gl/YXBFV6ZprvP2Q2xZ6'),
+                          Text('Senin-Minggu')
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('08.00-17.00'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_outlined),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                              onTap: () => {
+                                    launchUrl(
+                                      Uri.parse(
+                                          'https://maps.app.goo.gl/YXBFV6ZprvP2Q2xZ6'),
+                                    ),
+                                  },
+                              child: Text('Lokasi'))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          InkWell(
+                              onTap: () => {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => KampungLadang(),
                                       ),
-                                    },
-                                child: Text('Lokasi'))
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            InkWell(
-                                onTap: () => {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => KampungLadang(),
-                                        ),
-                                      )
-                                    },
-                                child: Icon(Icons.arrow_forward_sharp)),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.end,
-                        ),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
+                                    )
+                                  },
+                              child: Icon(Icons.arrow_forward_sharp)),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                    ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -167,96 +165,94 @@ class Destinasi extends StatelessWidget {
                   width: 400,
                   height: 470,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image(
-                            image: AssetImage("assets/TapalKuda/Home1.jpg"),
-                            width: 378,
-                            fit: BoxFit.cover,
-                          ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          image: AssetImage("assets/TapalKuda/Home1.jpg"),
+                          width: 378,
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: Text(
-                            'Cafe Tapal Kuda',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Text(
-                          'Kopi Tapal Kuda adalah sebuah kafe yang menawarkan pengalaman'
-                          'menikmati kopi yang tak terlupakan dengan suasana yang unik dan hangat.'
-                          'Terletak di lokasi strategis dengan pemandangan yang memikat, menciptakan'
-                          ' atmosfer yang berbeda dari kafe-kafe lainnya.',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: Text(
+                          'Cafe Tapal Kuda',
                           style: TextStyle(
-                            fontSize: 14,
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Text(
+                        'Kopi Tapal Kuda adalah sebuah kafe yang menawarkan pengalaman'
+                        'menikmati kopi yang tak terlupakan dengan suasana yang unik dan hangat.'
+                        'Terletak di lokasi strategis dengan pemandangan yang memikat, menciptakan'
+                        ' atmosfer yang berbeda dari kafe-kafe lainnya.',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_month_rounded),
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.calendar_month_rounded),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('Senin-Minggu'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.access_time),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('14.00-21.00'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            InkWell(
-                                onTap: () => {
-                                      launchUrl(
-                                        Uri.parse(
-                                            'https://maps.app.goo.gl/ue1eBB1frMBwZBjd6'),
+                          Text('Senin-Minggu'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('14.00-21.00'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_outlined),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                              onTap: () => {
+                                    launchUrl(
+                                      Uri.parse(
+                                          'https://maps.app.goo.gl/ue1eBB1frMBwZBjd6'),
+                                    ),
+                                  },
+                              child: Text('Lokasi')),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          InkWell(
+                              onTap: () => {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => TapalKuda(),
                                       ),
-                                    },
-                                child: Text('Lokasi')),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            InkWell(
-                                onTap: () => {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => TapalKuda(),
-                                        ),
-                                      )
-                                    },
-                                child: Icon(Icons.arrow_forward_sharp)),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.end,
-                        ),
-                      ],
-                    ),
+                                    )
+                                  },
+                              child: Icon(Icons.arrow_forward_sharp)),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(height: 20),
@@ -270,94 +266,92 @@ class Destinasi extends StatelessWidget {
                   width: 400,
                   height: 470,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image(
-                            image: AssetImage("assets/Villa/Home1.jpg"),
-                            width: 378,
-                            fit: BoxFit.cover,
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          image: AssetImage("assets/Villa/Home1.jpg"),
+                          width: 378,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: Text(
+                          '95 Farm Villa Resto',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Text(
+                        '95 Farm Villa Resto adalah destinasi kuliner yang'
+                        ' menawarkan pengalaman makan unik di tengah-tengah keindahan'
+                        'alam pedesaan. Restoran ini mengusung konsep villa dengan sentuhan pertanian,'
+                        'menciptakan suasana yang hangat dan menyegarkan bagi setiap pengunjung',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_month_rounded),
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: Text(
-                            '95 Farm Villa Resto',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                          Text('Senin-Minggu'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time),
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        Text(
-                          '95 Farm Villa Resto adalah destinasi kuliner yang'
-                          ' menawarkan pengalaman makan unik di tengah-tengah keindahan'
-                          'alam pedesaan. Restoran ini mengusung konsep villa dengan sentuhan pertanian,'
-                          'menciptakan suasana yang hangat dan menyegarkan bagi setiap pengunjung',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.calendar_month_rounded),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('Senin-Minggu'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.access_time),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text('08.00-21.00'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            InkWell(
-                                onTap: () => {
-                                      launchUrl(
-                                        Uri.parse(
-                                            'https://maps.app.goo.gl/1H9jD21QZyvkqneU7'),
+                          Text('08.00-21.00'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_outlined),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                              onTap: () => {
+                                    launchUrl(
+                                      Uri.parse(
+                                          'https://maps.app.goo.gl/1H9jD21QZyvkqneU7'),
+                                    ),
+                                  },
+                              child: Text('Lokasi'))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          InkWell(
+                              onTap: () => {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => VillaResto(),
                                       ),
-                                    },
-                                child: Text('Lokasi'))
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            InkWell(
-                                onTap: () => {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => VillaResto(),
-                                        ),
-                                      )
-                                    },
-                                child: Icon(Icons.arrow_forward_sharp)),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.end,
-                        ),
-                      ],
-                    ),
+                                    )
+                                  },
+                              child: Icon(Icons.arrow_forward_sharp)),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(width: 20),

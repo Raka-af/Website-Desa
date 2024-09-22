@@ -1,14 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:website_desa/dashboard/desktop/home_screen.dart';
 import 'package:website_desa/dashboard/desktop/layout_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DataScreen extends StatelessWidget {
-  const DataScreen({super.key});
+  const DataScreen({super.key, required int selectedIndex});
 
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      // showBackButton: false,
       body: Column(
         children: <Widget>[
           DataJenisKelamin(),
@@ -17,6 +19,7 @@ class DataScreen extends StatelessWidget {
           Footer(),
         ],
       ),
+      selectedIndex: 2,
     );
   }
 }
@@ -37,15 +40,13 @@ class _DataJenisKelaminState extends State<DataJenisKelamin> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      padding: EdgeInsets.symmetric(horizontal: 70, vertical: 30),
       child: Center(
         child: Container(
           decoration: BoxDecoration(
             color: Color.fromARGB(77, 77, 77, 77),
             borderRadius: BorderRadius.circular(20),
           ),
-          width: 1214,
-          height: 316,
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
           child: StreamBuilder<DocumentSnapshot>(
             stream: FirebaseFirestore.instance
@@ -90,7 +91,7 @@ class _DataJenisKelaminState extends State<DataJenisKelamin> {
                                   fontWeight: FontWeight.w500),
                             ),
                             Image(
-                              image: AssetImage("Assets/Penduduk/cowo.png"),
+                              image: AssetImage("assets/Penduduk/cowo.jpg"),
                               width: 120,
                               height: 115,
                             ),
@@ -140,7 +141,7 @@ class _DataJenisKelaminState extends State<DataJenisKelamin> {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Penduduk/cewe.png"),
+                                        AssetImage("assets/Penduduk/cewe.jpg"),
                                     width: 120,
                                     height: 115,
                                   ),
@@ -191,7 +192,7 @@ class _DataJenisKelaminState extends State<DataJenisKelamin> {
                                 ),
                                 Image(
                                   image:
-                                      AssetImage("Assets/Penduduk/Jumlah.png"),
+                                      AssetImage("assets/Penduduk/Jumlah.jpg"),
                                   width: 120,
                                   height: 115,
                                 ),
@@ -238,15 +239,13 @@ class _DataAgamaState extends State<DataAgama> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      padding: EdgeInsets.symmetric(horizontal: 70, vertical: 30),
       child: Center(
         child: Container(
           decoration: BoxDecoration(
             color: Color.fromARGB(77, 77, 77, 77),
             borderRadius: BorderRadius.circular(20),
           ),
-          width: 1214,
-          height: 316,
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
           child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
@@ -292,7 +291,7 @@ class _DataAgamaState extends State<DataAgama> {
                                     fontWeight: FontWeight.w500),
                               ),
                               Image(
-                                image: AssetImage("Assets/Agama/Islam.png"),
+                                image: AssetImage("assets/Agama/Islam.jpg"),
                                 width: 120,
                                 height: 115,
                               ),
@@ -342,7 +341,7 @@ class _DataAgamaState extends State<DataAgama> {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Agama/Kristen.png"),
+                                        AssetImage("assets/Agama/Kristen.jpg"),
                                     width: 120,
                                     height: 115,
                                   ),
@@ -394,7 +393,7 @@ class _DataAgamaState extends State<DataAgama> {
                                   ),
                                   Image(
                                     image:
-                                        AssetImage("Assets/Agama/Buddha.png"),
+                                        AssetImage("assets/Agama/Buddha.jpg"),
                                     width: 120,
                                     height: 115,
                                   ),
@@ -435,15 +434,13 @@ class DataPendidikan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      padding: EdgeInsets.symmetric(horizontal: 70, vertical: 30),
       child: Center(
         child: Container(
           decoration: BoxDecoration(
             color: Color.fromARGB(77, 77, 77, 77),
             borderRadius: BorderRadius.circular(20),
           ),
-          width: 1214,
-          height: 560,
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
           child: StreamBuilder<DocumentSnapshot>(
             stream: FirebaseFirestore.instance
@@ -490,7 +487,7 @@ class DataPendidikan extends StatelessWidget {
                                   fontWeight: FontWeight.w500),
                             ),
                             Image(
-                              image: AssetImage("Assets/Pendidikan/TK.png"),
+                              image: AssetImage("assets/Pendidikan/Tk.jpg"),
                               width: 120,
                               height: 115,
                             ),
@@ -540,7 +537,7 @@ class DataPendidikan extends StatelessWidget {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Image(
-                                  image: AssetImage("Assets/Pendidikan/SD.png"),
+                                  image: AssetImage("assets/Pendidikan/Sd.jpg"),
                                   width: 120,
                                   height: 115,
                                 ),
@@ -593,7 +590,7 @@ class DataPendidikan extends StatelessWidget {
                                 ),
                                 Image(
                                   image:
-                                      AssetImage("Assets/Pendidikan/SMP.png"),
+                                      AssetImage("assets/Pendidikan/Smp.jpg"),
                                   width: 120,
                                   height: 115,
                                 ),
@@ -656,7 +653,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                       image: AssetImage(
-                                          "Assets/Pendidikan/SMA.png"),
+                                          "assets/Pendidikan/Sma.jpg"),
                                       width: 120,
                                       height: 115,
                                     ),
@@ -709,7 +706,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                       image: AssetImage(
-                                          "Assets/Pendidikan/S1.png"),
+                                          "assets/Pendidikan/S1.jpg"),
                                       width: 120,
                                       height: 115,
                                     ),
@@ -762,7 +759,7 @@ class DataPendidikan extends StatelessWidget {
                                     ),
                                     Image(
                                       image: AssetImage(
-                                          "Assets/Pendidikan/S2.png"),
+                                          "assets/Pendidikan/S2.jpg"),
                                       width: 120,
                                       height: 115,
                                     ),
@@ -793,76 +790,6 @@ class DataPendidikan extends StatelessWidget {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-//Footer
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    var media = MediaQuery.of(context).size;
-    return Container(
-      color: Colors.black54,
-      width: screenWidth * 1,
-      height: screenHeight * 0.2,
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: media.width * 0.02,
-          ),
-          Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com'
-            '',
-            style: TextStyle(
-              fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-              color: Colors.white,
-            ),
-          ),
-          (MediaQuery.of(context).size.width > 750)
-              ? SizedBox(width: screenWidth * 0.45)
-              : SizedBox(width: screenWidth * 0.25),
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: media.height * 0.03,
-              ),
-              Text(
-                'Media Sosial',
-                style: TextStyle(
-                    fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-                    color: Colors.white),
-              ),
-              Row(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://www.instagram.com/desamargalaksana_/')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://web.facebook.com/profile.php?id=61557585922362')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-          ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     );
   }

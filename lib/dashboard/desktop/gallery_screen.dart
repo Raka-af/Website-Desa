@@ -1,13 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:website_desa/admin/galeri.dart';
-import 'package:website_desa/dashboard/desktop/layout_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:website_desa/dashboard/desktop/home_screen.dart';
+import 'package:website_desa/dashboard/desktop/layout_screen.dart'; // Import Firestore
 
 class GalleryScreen extends StatelessWidget {
-  const GalleryScreen({super.key});
+  const GalleryScreen({super.key, required int selectedIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +17,12 @@ class GalleryScreen extends StatelessWidget {
           Footer(),
         ],
       ),
+      selectedIndex: 6,
     );
   }
 }
 
-//Gallery
+// Gallery Widget
 class Gallery extends StatefulWidget {
   const Gallery({super.key});
 
@@ -31,7 +31,7 @@ class Gallery extends StatefulWidget {
 }
 
 class _GalleryState extends State<Gallery> {
-  List<String> imageUrls = [];
+  List<Map<String, String>> images = [];
 
   @override
   void initState() {
@@ -40,135 +40,88 @@ class _GalleryState extends State<Gallery> {
   }
 
   Future<void> _loadImages() async {
-    List<String> urls = await FirestoreDatabase().getImages();
+    List<Map<String, String>> imageData = await FirestoreDatabase().getImages();
     setState(() {
-      imageUrls = urls;
+      images = imageData;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: 700,
-      width: double.infinity, // Use double.infinity to make it full width
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-      child: imageUrls.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, // Number of columns in the grid
-                crossAxisSpacing: 30, // Horizontal space between items
-                mainAxisSpacing: 30, // Vertical space between items
-              ),
-              itemCount: imageUrls.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  color: Color.fromARGB(77, 77, 77, 77),
-                  child: Image.network(
-                    imageUrls[index],
-                    width: 200,
-                    height: 100,
-                    fit: BoxFit.cover,
+    return SingleChildScrollView(
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: 480,
+        ),
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+        child: images.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : Column(
+                children: [
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 30,
+                      mainAxisSpacing: 30,
+                    ),
+                    itemCount: images.length,
+                    itemBuilder: (context, index) {
+                      return SingleChildScrollView(
+                        child: Container(
+                          color: Color.fromARGB(77, 77, 77, 77),
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            children: [
+                              Image.network(
+                                images[index]['url']!,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(
+                                  height: 8), // Space between image and text
+                              Text(
+                                images[index]['name']!,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ],
+              ),
+      ),
     );
   }
 }
 
+// Firestore Database class
 class FirestoreDatabase {
-  Future<List<String>> getImages() async {
-    List<String> imageUrls = [];
+  Future<List<Map<String, String>>> getImages() async {
+    List<Map<String, String>> imageUrls = [];
 
     try {
-      final ListResult result = await FirebaseStorage.instance
-          .ref(
-              'images') // Pastikan ini folder di Firebase Storage tempat gambar kamu disimpan
-          .listAll();
+      // Fetch the collection from Firestore
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('images') // Your Firestore collection name
+          .get();
 
-      print('Jumlah gambar ditemukan: ${result.items.length}');
+      // Loop through each document
+      for (var doc in snapshot.docs) {
+        String url = doc['url'];
+        String name = doc['name'];
 
-      // Mendapatkan URL untuk setiap gambar
-      for (var ref in result.items) {
-        String url = await ref.getDownloadURL();
-        print('URL gambar: $url'); // Tambahkan log untuk setiap URL gambar
-        imageUrls.add(url);
+        // Add both url and name to the list
+        imageUrls.add({'url': url, 'name': name});
       }
     } catch (e) {
       print("Error fetching images: $e");
     }
 
     return imageUrls;
-  }
-}
-
-//Footer
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    var media = MediaQuery.of(context).size;
-    return Container(
-      color: Colors.black54,
-      width: screenWidth * 1,
-      height: screenHeight * 0.2,
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: media.width * 0.02,
-          ),
-          Text(
-            'Desa Margalaksana \n Jl. Kareumbi Desa Margalaksana Kec. Sumedang Selatan \n Kabuaten Sumedang Provinsi Jawa Barat \n Kode Pos 45311 \n Email:pemdesmargalaksana2013@gmail.com',
-            style: TextStyle(
-              fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-              color: Colors.white,
-            ),
-          ),
-          (MediaQuery.of(context).size.width > 750)
-              ? SizedBox(width: screenWidth * 0.45)
-              : SizedBox(width: screenWidth * 0.25),
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: media.height * 0.03,
-              ),
-              Text(
-                'Media Sosial',
-                style: TextStyle(
-                    fontSize: screenWidth * 0.007 + screenHeight * 0.01,
-                    color: Colors.white),
-              ),
-              Row(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://www.instagram.com/desamargalaksana_/')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/social.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://web.facebook.com/profile.php?id=61557585922362')),
-                    child: Image(
-                      image: AssetImage("assets/Desa/facebook.png"),
-                      width: screenWidth * 0.045,
-                      height: screenHeight * 0.045,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.start,
-          ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
-      ),
-    );
   }
 }

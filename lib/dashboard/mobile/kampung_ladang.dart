@@ -8,6 +8,7 @@ class KampungLadang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: [
           Ladang(),
@@ -56,82 +57,122 @@ class Ladang extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: Color.fromARGB(77, 77, 77, 77),
               ),
-              child: Expanded(
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image(
-                        image: AssetImage("assets/KampungLadang/Taman.jpg"),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image(
+                      image: AssetImage("assets/KampungLadang/Taman.jpg"),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Kampoeng Ladang adalah sebuah rumah makan khas Sunda yang menawarkan'
+                    ' pengalaman kuliner yang autentik dan memanjakan lidah. Terletak di tengah'
+                    ' suasana pedesaan yang asri, Kampung Ladang menghadirkan berbagai hidangan tradisional Sunda'
+                    ' yang kaya rasa dan diolah dari bahan-bahan segar hasil bumi lokal.'
+                    ' Di Kampung Ladang, Anda bisa menikmati berbagai sajian khas seperti nasi liwet, ikan bakar,'
+                    ' pepes, karedok, hingga sambal terasi yang pedas menggugah selera.'
+                    ' Desain interior rumah makan ini mengusung konsep alam terbuka dengan penggunaan material alami'
+                    ' seperti kayu dan bambu, menciptakan suasana nyaman dan menenangkan. Di sini, para tamu dapat '
+                    ' menikmati makanan sambil menikmati pemandangan sawah yang hijau',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.call),
+                      SizedBox(
+                        width: 5,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Kampoeng Ladang adalah sebuah rumah makan khas Sunda yang menawarkan'
-                      ' pengalaman kuliner yang autentik dan memanjakan lidah. Terletak di tengah'
-                      ' suasana pedesaan yang asri, Kampung Ladang menghadirkan berbagai hidangan tradisional Sunda'
-                      ' yang kaya rasa dan diolah dari bahan-bahan segar hasil bumi lokal.'
-                      ' Di Kampung Ladang, Anda bisa menikmati berbagai sajian khas seperti nasi liwet, ikan bakar,'
-                      ' pepes, karedok, hingga sambal terasi yang pedas menggugah selera.'
-                      ' Desain interior rumah makan ini mengusung konsep alam terbuka dengan penggunaan material alami'
-                      ' seperti kayu dan bambu, menciptakan suasana nyaman dan menenangkan. Di sini, para tamu dapat '
-                      ' menikmati makanan sambil menikmati pemandangan sawah yang hijau',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Expanded(
+                      InkWell(
+                        onTap: () => {
+                          launchUrl(
+                            Uri.parse('https://wa.me/6281234567890'),
+                          ),
+                        },
+                        child: Text(
+                          '08129994135',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      InkWell(
+                        onTap: () => {
+                          launchUrl(
+                            Uri.parse(
+                                'https://maps.app.goo.gl/YXBFV6ZprvP2Q2xZ6'),
+                          ),
+                        },
+                        child: Text(
+                          'Lokasi',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image(
+                          image: AssetImage("assets/KampungLadang/Pohon2.jpg"),
+                          fit: BoxFit.cover,
+                          width: screenWidth * 0.35,
+                          height: screenHeight * 0.20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
                             child: Image(
                               image:
-                                  AssetImage("assets/KampungLadang/Pohon2.jpg"),
+                                  AssetImage("assets/KampungLadang/Liwet.jpg"),
                               fit: BoxFit.cover,
-                              width: screenWidth * 0.35,
-                              height: screenHeight * 0.20,
+                              width: screenWidth * 0.3,
+                              height: screenHeight * 0.1,
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image(
-                                image: AssetImage(
-                                    "assets/KampungLadang/Liwet.jpg"),
-                                fit: BoxFit.cover,
-                                width: screenWidth * 0.3,
-                                height: screenHeight * 0.1,
-                              ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image(
+                              image:
+                                  AssetImage("assets/KampungLadang/Taman.jpg"),
+                              fit: BoxFit.cover,
+                              width: screenWidth * 0.3,
+                              height: screenHeight * 0.1,
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image(
-                                image: AssetImage(
-                                    "assets/KampungLadang/Taman.jpg"),
-                                fit: BoxFit.cover,
-                                width: screenWidth * 0.3,
-                                height: screenHeight * 0.1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.start,
-                    )
-                  ],
-                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.start,
+                  )
+                ],
               ),
             ),
           ),

@@ -8,6 +8,7 @@ class StructureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: [
           OrganizationChart(),
@@ -24,19 +25,27 @@ class OrganizationChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      width: 1500,
-      height: 900,
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              'Struktur Organisasi\nPeriode 2022 - 2028',
+              style: TextStyle(fontSize: 16, color: Colors.black),
+            ),
+            Container(
+              height: 2,
+              width: 150,
+              color: Colors.black,
+              margin: EdgeInsets.only(top: 8),
+            ),
             SizedBox(height: 30),
             Center(
               child: OrganizationBox(
                 title: 'Euis Mulyati',
                 title2: 'Kepala Desa',
-                imagePath:
-                    'assets/Struktur/Kepala Desa.jpg', // Ganti dengan path gambar lokal
+                imagePath: 'assets/Struktur/Kepala Desa.jpg',
               ),
             ),
             SizedBox(height: 30),
@@ -46,8 +55,7 @@ class OrganizationChart extends StatelessWidget {
                 OrganizationBox(
                   title: 'Jujun Junaedi',
                   title2: 'Sekretaris Desa',
-                  imagePath:
-                      'assets/Struktur/Sekertaris.jpg', // Ganti dengan path gambar lokal
+                  imagePath: 'assets/Struktur/Sekertaris.jpg',
                 ),
               ],
             ),
@@ -58,49 +66,55 @@ class OrganizationChart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    // Padding(padding: EdgeInsets.all(15)),
                     OrganizationBox(
                       title: 'Kusnadi',
                       title2: 'Kasi Pemerintahan',
-                      imagePath:
-                          'assets/Struktur/Kasi Pemerintahan.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kasi Pemerintahan.jpg',
+                    ),
+                    SizedBox(
+                      width: 30,
                     ),
                     OrganizationBox(
                       title: 'Silvi Desiyanti',
                       title2: 'Kasi Pelayanan',
-                      imagePath:
-                          'assets/Struktur/Kasi Pelayanan.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kasi Pelayanan.jpg',
+                    ),
+                    SizedBox(
+                      width: 15,
                     ),
                     OrganizationBox(
                       title: 'Neng Neli Helmiawati',
                       title2: 'Kasi Kesejahteraan',
-                      imagePath:
-                          'assets/Struktur/Kasi Kesejahteraan.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kasi Kesejahteraan.jpg',
                     ),
                   ],
                 ),
                 SizedBox(height: 30),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    // Padding(padding: EdgeInsets.all(15)),
                     OrganizationBox(
                       title: 'Mulyana',
                       title2: 'Kasi Perencanaan',
-                      imagePath:
-                          'assets/Struktur/Kaur Perencanaan.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kaur Perencanaan.jpg',
+                    ),
+                    SizedBox(
+                      width: 30,
                     ),
                     OrganizationBox(
                       title: 'Sinta Puspitasari',
                       title2: 'Kaur Keuangan',
-                      imagePath:
-                          'assets/Struktur/Kaur Keuangan.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kaur Keuangan.jpg',
+                    ),
+                    SizedBox(
+                      width: 15,
                     ),
                     OrganizationBox(
                       title: 'Enang Mulyana',
                       title2: 'Kaur TU dan Umum',
-                      imagePath:
-                          'assets/Struktur/Kaur TU dan Umum.jpg', // Ganti dengan path gambar lokal
+                      imagePath: 'assets/Struktur/Kaur TU dan Umum.jpg',
                     ),
                   ],
                 ),
@@ -113,14 +127,12 @@ class OrganizationChart extends StatelessWidget {
                 OrganizationBox(
                   title: 'Chotibul Fajar',
                   title2: 'Kadus 1',
-                  imagePath:
-                      'assets/Struktur/Kadus 1.jpg', // Ganti dengan path gambar lokal
+                  imagePath: 'assets/Struktur/Kadus 1.jpg',
                 ),
                 OrganizationBox(
                   title: 'Sugirman',
                   title2: 'Kadus 2',
-                  imagePath:
-                      'assets/Struktur/Kadus 2.jpg', // Ganti dengan path gambar lokal
+                  imagePath: 'assets/Struktur/Kadus 2.jpg',
                 ),
               ],
             ),
@@ -145,8 +157,8 @@ class OrganizationBox extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 75,
+          height: 75,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(imagePath), // Menggunakan gambar dari aset
@@ -162,7 +174,7 @@ class OrganizationBox extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 13,
+            fontSize: 12,
           ),
         ),
         Text(

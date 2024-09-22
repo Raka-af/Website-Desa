@@ -8,6 +8,7 @@ class TapalKuda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutScreen(
+      showBackButton: false,
       body: Column(
         children: [
           Cafe(),
@@ -56,8 +57,7 @@ class Cafe extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(77, 77, 77, 77),
               ),
-              child: Expanded(
-                  child: Column(
+              child: Column(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15),
@@ -80,6 +80,51 @@ class Cafe extends StatelessWidget {
                     ' seperti teh, cokelat panas, dan jus segar, serta berbagai kudapan lezat yang'
                     ' cocok untuk menemani waktu santai Anda',
                     style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.call),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      InkWell(
+                        onTap: () => {
+                          launchUrl(
+                            Uri.parse('https://wa.me/6285315141920'),
+                          ),
+                        },
+                        child: Text(
+                          '085315141920',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      InkWell(
+                        onTap: () => {
+                          launchUrl(
+                            Uri.parse(
+                                'https://maps.app.goo.gl/ue1eBB1frMBwZBjd6'),
+                          ),
+                        },
+                        child: Text(
+                          'Lokasi',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 10,
@@ -111,7 +156,7 @@ class Cafe extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
                 ],
-              )),
+              ),
             ),
           ),
         ],

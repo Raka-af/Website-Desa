@@ -27,6 +27,8 @@ class _AdminScreenState extends State<AdminScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 79, 125, 163),
@@ -54,7 +56,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   color: const Color.fromARGB(255, 79, 125, 163),
-                  height: 300,
+                  height: screenHeight * 0.5,
                   child: Column(
                     children: [
                       Icon(Icons.bar_chart, color: Colors.white, size: 200),
@@ -89,7 +91,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   color: const Color.fromARGB(255, 79, 125, 163),
-                  height: 300,
+                  height: screenHeight * 0.5,
                   child: Column(
                     children: [
                       Icon(Icons.image, color: Colors.white, size: 200),
@@ -123,7 +125,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   color: const Color.fromARGB(255, 79, 125, 163),
-                  height: 300,
+                  height: screenHeight * 0.5,
                   child: Column(
                     children: [
                       Icon(Icons.bar_chart, color: Colors.white, size: 200),

@@ -56,8 +56,7 @@ class Cafe extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: Color.fromARGB(77, 77, 77, 77),
               ),
-              child: Expanded(
-                  child: Column(
+              child: Column(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15),
@@ -108,7 +107,7 @@ class Cafe extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
                 ],
-              )),
+              ),
             ),
           ),
         ],
